@@ -35,7 +35,6 @@ class APIController extends BaseController {
 		}
 
 		$json = array(
-			'season' => 'Sesong 14',
 			'matches' => $matches,
 		);
 		return $json;
