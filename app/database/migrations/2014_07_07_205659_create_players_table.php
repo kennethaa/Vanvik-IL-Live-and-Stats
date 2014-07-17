@@ -21,6 +21,7 @@ class CreatePlayersTable extends Migration {
 			$table->date('birth_date');
 			$table->text('teams');
 			$table->text('image');
+			$table->boolean('inactive'); //Inactive player or not
 			$table->timestamps();
 		});
 	}

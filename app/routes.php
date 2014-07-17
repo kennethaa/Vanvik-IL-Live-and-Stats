@@ -13,4 +13,7 @@
 
 Route::get('/', 'HomeController@showWelcome');
 
-Route::get('/api/matches', 'APIController@getMatches');
+Route::get('/api/v1/matches', 'APIv1@showMatches');
+Route::get('/api/v1/players', 'APIv1@showPlayers');
+Route::get('/api/v1/teams', 'APIv1@showTeams');
+Route::get('/api/v1/seasons', 'APIv1@showSeasons');

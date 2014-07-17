@@ -12,6 +12,8 @@ return array(
 
 	'model' => 'Match',
 
+	'form_width' => 400,
+
 	/**
 	 * The display columns
 	 */

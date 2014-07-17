@@ -15,6 +15,7 @@ class CreateMatchesTable extends Migration {
 		Schema::create('matches', function($table)
 		{
 			$table->increments('id');
+			$table->integer('season_id')->unsigned();
 			$table->integer('hometeam_id')->unsigned();
 			$table->integer('awayteam_id')->unsigned();
 			$table->datetime('start_time');
@@ -23,9 +24,9 @@ class CreateMatchesTable extends Migration {
 			$table->text('a_ref1');
 			$table->text('a_ref2');
 			$table->text('spectators');
-			$table->integer('star3_id')->unsigned()->nullable();;
-			$table->integer('star2_id')->unsigned()->nullable();;
-			$table->integer('star1_id')->unsigned()->nullable();;
+			$table->integer('star3_id')->unsigned()->nullable();
+			$table->integer('star2_id')->unsigned()->nullable();
+			$table->integer('star1_id')->unsigned()->nullable();
 			$table->timestamps();
 		});
 	}

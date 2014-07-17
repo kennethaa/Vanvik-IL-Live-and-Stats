@@ -76,7 +76,7 @@
 	ko.bindingHandlers.select2 = {
 		update: function (element, valueAccessor, allBindingsAccessor, viewModel)
 		{
-			var options = valueAccessor(),
+			var options = valueAccessor(),	
 				defaults = $.extend({}, select2Defaults),
 				data;
 
@@ -152,6 +152,19 @@
 					});
 
 					$(element).data('list_data', topItems.concat(allItems));
+				}
+			}
+
+			//Select first item
+			//ADD 'edit_field_<<columnn_name>>'
+			if (allBindingsAccessor().attr) 
+			{
+				if (allBindingsAccessor().attr.id === 'edit_field_hometeam' || allBindingsAccessor().attr.id === 'edit_field_awayteam' ) 
+				{
+					if (!allBindingsAccessor().value())
+					{
+						$(element).select2('val', '1');
+					}
 				}
 			}
 

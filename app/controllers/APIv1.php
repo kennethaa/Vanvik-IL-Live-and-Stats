@@ -1,9 +1,13 @@
 <?php
 
-class APIController extends BaseController {
+class APIv1 extends BaseController {
 
+	public function missingMethod($parameters = array())
+	{
+	    return 'Ingenting funnet!';
+	}
 
-	public function getMatches()
+	public function showMatches()
 	{
 		$matches = Match::all();
 		$teams = Team::all();
@@ -12,6 +16,7 @@ class APIController extends BaseController {
 		foreach ($matches as $key => $value) {
 			//$matches[$key]['hometeam'] = getTeamName($matches[$key]['hometeam_id']);
 			//$matches[$key]['awayteam'] = getTeamName($matches[$key]['awayteam_id']);
+
 			foreach ($teams as $teamKey => $teamValue) {
 				if ($matches[$key]['hometeam_id'] == $teams[$teamKey]['id']) {
 					$matches[$key]['hometeam'] = $teams[$teamKey]['name'];
@@ -36,6 +41,36 @@ class APIController extends BaseController {
 
 		$json = array(
 			'matches' => $matches,
+		);
+		return $json;
+	}
+
+	public function showPlayers()
+	{
+		$players = Player::all();
+
+		$json = array(
+			'players' => $players,
+		);
+		return $json;
+	}
+
+	public function showTeams()
+	{
+		$teams = Team::all();
+
+		$json = array(
+			'teams' => $teams,
+		);
+		return $json;
+	}
+
+	public function showSeasons()
+	{
+		$seasons = Season::all();
+
+		$json = array(
+			'seasons' => $seasons,
 		);
 		return $json;
 	}
