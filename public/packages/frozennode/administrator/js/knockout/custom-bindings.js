@@ -159,7 +159,10 @@
 			//ADD 'edit_field_<<columnn_name>>'
 			if (allBindingsAccessor().attr) 
 			{
-				if (allBindingsAccessor().attr.id === 'edit_field_hometeam' || allBindingsAccessor().attr.id === 'edit_field_awayteam' ) 
+				if (
+					allBindingsAccessor().attr.id === 'edit_field_season' ||
+					allBindingsAccessor().attr.id === 'edit_field_match'
+				) 
 				{
 					if (!allBindingsAccessor().value())
 					{

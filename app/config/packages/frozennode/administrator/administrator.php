@@ -52,9 +52,12 @@ return array(
 	 *	)
 	 */
 	'menu' => array(
+		'Hendelse' => 'events',
+		'Mål' => 'goals',
+		'Kort' => 'cards',
+		'Kamper' => 'matches',
 		'Spillere' => 'players',
 		'Lag' => 'teams',
-		'Kamper' => 'matches',
 		'Sesonger' => 'seasons',
 		'Innstillinger' => 'settings.site',
 	),

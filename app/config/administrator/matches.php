@@ -18,6 +18,11 @@ return array(
 	 * The display columns
 	 */
 	'columns' => array(
+		'season' => array(
+			'title' => 'Sesong',
+			'relationship' => 'season',
+			'select' => '(:table).name',
+		),
 		'hometeam' => array(
 			'title' => 'Hjemmelag',
 			'relationship' => 'hometeam',
@@ -57,13 +62,57 @@ return array(
 	 * The filter set
 	 */
 	'filters' => array(
-		
+		'season' => array(
+			'title' => 'Sesong',
+			'type' => 'relationship',
+		),
+		'hometeam' => array(
+			'title' => 'Hjemmelag',
+			'type' => 'relationship',
+		),
+		'awayteam' => array(
+			'title' => 'Bortelag',
+			'type' => 'relationship',
+		),
+		'venue' => array(
+			'title' => 'Bane',
+			'type' => 'text',
+		),
+		'ref' => array(
+			'title' => 'Hoveddommer',
+			'type' => 'text',
+		),
+		'a_ref1' => array(
+			'title' => 'AD 1',
+			'type' => 'text',
+		),
+		'a_ref2' => array(
+			'title' => 'AD 2',
+			'type' => 'text',
+		),
+		'star3' => array(
+			'title' => '3 stjerner',
+			'type' => 'relationship',
+		),
+		'star2' => array(
+			'title' => '2 stjerner',
+			'type' => 'relationship',
+		),
+		'star1' => array(
+			'title' => '1 stjerne',
+			'type' => 'relationship',
+		),
 	),
 
 	/**
 	 * The editable fields
 	 */
 	'edit_fields' => array(
+		'season' => array(
+			'title' => 'Sesong',
+			'type' => 'relationship',
+			'name_field' => 'name',
+		),
 		'hometeam' => array(
 			'title' => 'Hjemmelag',
 			'type' => 'relationship',
@@ -71,6 +120,16 @@ return array(
 		),
 		'awayteam' => array(
 			'title' => 'Bortelag',
+			'type' => 'relationship',
+			'name_field' => 'name',
+		),
+		'starting' => array(
+			'title' => 'Startellever',
+			'type' => 'relationship',
+			'name_field' => 'name',
+		),
+		'substitute' => array(
+			'title' => 'Innbyttere',
 			'type' => 'relationship',
 			'name_field' => 'name',
 		),
@@ -114,7 +173,6 @@ return array(
 			'type' => 'relationship',
 			'name_field' => 'name',
 		),
-
 
 	),
 

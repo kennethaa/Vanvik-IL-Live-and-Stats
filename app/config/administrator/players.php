@@ -27,7 +27,7 @@ return array(
 		'formatted_birth_date' => array(
 			'title' => 'Født',
 			'sort_field' => 'birth_date',
-		)
+		),
 	),
 
 	/**
@@ -53,6 +53,10 @@ return array(
 		'birth_date' => array(
 			'title' => 'Født',
 			'type' => 'date'
+		),
+		'inactive' => array(
+			'title' => 'Innaktiv',
+			'type' => 'bool'
 		),
 	),
 
@@ -82,7 +86,7 @@ return array(
 		),
 		'birth_date' => array(
 			'title' => 'Født',
-			'type' => 'date',
+			'type' => 'date',	
 		),
 		'teams' => array(
 			'title' => 'Tidligere klubber',
@@ -95,6 +99,10 @@ return array(
 		    'naming' => 'random',
 		    'length' => 20,
 		    'size_limit' => 10,
+		),
+		'inactive' => array(
+			'title' => 'Innaktiv',
+			'type' => 'bool',
 		),
 	),
 
