@@ -6,11 +6,11 @@
 
 return array(
 
-	'title' => 'Hendelse',
+	'title' => 'Mål',
 
-	'single' => 'hendelse',
+	'single' => 'mål',
 
-	'model' => 'Happening',
+	'model' => 'Goal',
 
 	'form_width' => 400,
 
@@ -27,9 +27,15 @@ return array(
 			'title' => 'Spilleminutt',
 			'sort_field' => 'minute',
 		),
-		'happening' => array(
-			'title' => 'Hendelse',
-			'sort_field' => 'happening',
+		'scorer' => array(
+			'title' => 'Målscorer',
+			'relationship' => 'scorer',
+			'select' => '(:table).name',
+		),
+		'assist' => array(
+			'title' => 'Assist',
+			'relationship' => 'assist',
+			'select' => '(:table).name',
 		),
 		'description' => array(
 			'title' => 'Beskrivelse',
@@ -46,16 +52,17 @@ return array(
 			'type' => 'relationship',
 			'name_field' => 'match_name',
 		),
-		'happening' => array(
-			'title' => 'Hendelse',
-			'type' => 'enum',
-			'options' => array(
-		        'chance' => 'Sjanse',
-		        'comment' => 'Kommentar',
-		        'whistle' => 'Fløyte',
-		        'change' => 'Bytte'
-		    ),
+		'scorer' => array(
+			'title' => 'Målscorer',
+			'type' => 'relationship',
+			'name_field' => 'name',
 		),
+		'assist' => array(
+			'title' => 'Assist',
+			'type' => 'relationship',
+			'name_field' => 'name',
+		),
+
 	),
 
 	/**
@@ -74,15 +81,19 @@ return array(
 			'type' => 'text',
 			'limit' => 10
 		),
-		'happening' => array(
-			'title' => 'Hendelse',
-			'type' => 'enum',
-			'options' => array(
-		        'chance' => 'Sjanse',
-		        'comment' => 'Kommentar',
-		        'whistle' => 'Fløyte',
-		        'change' => 'Bytte'
-		    ),
+		'scorer' => array(
+			'title' => 'Målscorer',
+			'type' => 'relationship',
+			'name_field' => 'name',
+		),
+		'assist' => array(
+			'title' => 'Assist',
+			'type' => 'relationship',
+			'name_field' => 'name',
+		),
+		'hometeam' => array(
+			'title' => 'Hjemmelaget?',
+			'type' => 'bool',
 		),
 		'description' => array(
 			'title' => 'Beskrivelse',

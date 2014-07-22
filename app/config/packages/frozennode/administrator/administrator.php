@@ -14,7 +14,7 @@ return array(
 	 *
 	 * @type string
 	 */
-	'title' => 'Admin',
+	'title' => 'Vanvik IL Live & Stats',
 
 	/**
 	 * The path to your model config directory

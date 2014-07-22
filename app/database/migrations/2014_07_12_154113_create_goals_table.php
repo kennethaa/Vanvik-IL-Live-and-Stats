@@ -18,7 +18,7 @@ class CreateGoalsTable extends Migration {
 			$table->integer('match_id')->unsigned();
 			$table->integer('minute');
 			$table->integer('scorer_id')->unsigned()->nullable();
-			$table->integer('assists_id')->unsigned()->nullable();
+			$table->integer('assist_id')->unsigned()->nullable();
 			$table->boolean('hometeam'); //Hometeam or Awayteam
 			$table->longText('description');
 			$table->timestamps();

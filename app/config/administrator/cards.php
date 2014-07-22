@@ -6,11 +6,11 @@
 
 return array(
 
-	'title' => 'Hendelse',
+	'title' => 'Kort',
 
-	'single' => 'hendelse',
+	'single' => 'kort',
 
-	'model' => 'Happening',
+	'model' => 'Card',
 
 	'form_width' => 400,
 
@@ -31,6 +31,11 @@ return array(
 			'title' => 'Hendelse',
 			'sort_field' => 'happening',
 		),
+		'player' => array(
+			'title' => 'Spiller',
+			'relationship' => 'player',
+			'select' => '(:table).name',
+		),
 		'description' => array(
 			'title' => 'Beskrivelse',
 			'sort_field' => 'description',
@@ -50,11 +55,15 @@ return array(
 			'title' => 'Hendelse',
 			'type' => 'enum',
 			'options' => array(
-		        'chance' => 'Sjanse',
-		        'comment' => 'Kommentar',
-		        'whistle' => 'Fløyte',
-		        'change' => 'Bytte'
+		        'yellowcard' => 'Gult kort',
+		        'yellowredcard' => '2. gule kort',
+		        'redcard' => 'Rødt kort'
 		    ),
+		),
+		'player' => array(
+			'title' => 'Spiller',
+			'type' => 'relationship',
+			'name_field' => 'name',
 		),
 	),
 
@@ -78,11 +87,19 @@ return array(
 			'title' => 'Hendelse',
 			'type' => 'enum',
 			'options' => array(
-		        'chance' => 'Sjanse',
-		        'comment' => 'Kommentar',
-		        'whistle' => 'Fløyte',
-		        'change' => 'Bytte'
+		        'yellowcard' => 'Gult kort',
+		        'yellowredcard' => '2. gule kort',
+		        'redcard' => 'Rødt kort'
 		    ),
+		),
+		'player' => array(
+			'title' => 'Spiller',
+			'type' => 'relationship',
+			'name_field' => 'name',
+		),
+		'hometeam' => array(
+			'title' => 'Hjemmelaget?',
+			'type' => 'bool',
 		),
 		'description' => array(
 			'title' => 'Beskrivelse',

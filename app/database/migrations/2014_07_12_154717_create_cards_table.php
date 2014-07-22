@@ -17,7 +17,7 @@ class CreateCardsTable extends Migration {
 			$table->increments('id');
 			$table->integer('match_id')->unsigned();
 			$table->integer('minute');
-			$table->enum('event', array('yellowcard', 'yellowredcard', 'redcard'));
+			$table->enum('happening', array('yellowcard', 'yellowredcard', 'redcard'));
 			$table->integer('player_id')->unsigned()->nullable();
 			$table->boolean('hometeam'); //Hometeam or Awayteam
 			$table->longText('description');

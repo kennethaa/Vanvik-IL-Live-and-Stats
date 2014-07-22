@@ -18,4 +18,15 @@ class Player extends Eloquent {
 	{
 		return $this->hasMany('Match');
 	}
+
+	public function scorer() 
+	{
+		return $this->hasMany('Goal');
+	}
+
+	public function assist() 
+	{
+		return $this->hasMany('Goal');
+	}
+	
 }
