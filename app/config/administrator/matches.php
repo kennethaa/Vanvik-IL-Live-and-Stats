@@ -26,12 +26,12 @@ return array(
 		'hometeam' => array(
 			'title' => 'Hjemmelag',
 			'relationship' => 'hometeam',
-			'select' => '(:table).name',
+			'select' => '(:table).id',
 		),
 		'awayteam' => array(
 			'title' => 'Bortelag',
 			'relationship' => 'awayteam',
-			'select' => '(:table).name',
+			'select' => '(:table).id',
 		),
 		'start_time' => array(
 			'title' => 'Starttid',
@@ -65,14 +65,17 @@ return array(
 		'season' => array(
 			'title' => 'Sesong',
 			'type' => 'relationship',
+			'name_field' => 'name',
 		),
 		'hometeam' => array(
 			'title' => 'Hjemmelag',
 			'type' => 'relationship',
+			'name_field' => 'id',
 		),
 		'awayteam' => array(
 			'title' => 'Bortelag',
 			'type' => 'relationship',
+			'name_field' => 'id',
 		),
 		'venue' => array(
 			'title' => 'Bane',
@@ -112,16 +115,18 @@ return array(
 			'title' => 'Sesong',
 			'type' => 'relationship',
 			'name_field' => 'name',
+			'options_sort_field' => 'id',
+			'options_sort_direction' => 'desc',
 		),
 		'hometeam' => array(
 			'title' => 'Hjemmelag',
 			'type' => 'relationship',
-			'name_field' => 'name',
+			'name_field' => 'id',
 		),
 		'awayteam' => array(
 			'title' => 'Bortelag',
 			'type' => 'relationship',
-			'name_field' => 'name',
+			'name_field' => 'id',
 		),
 		'starting' => array(
 			'title' => 'Startellever',

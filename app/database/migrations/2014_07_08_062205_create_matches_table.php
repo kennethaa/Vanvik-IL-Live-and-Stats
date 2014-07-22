@@ -16,8 +16,8 @@ class CreateMatchesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('season_id')->unsigned();
-			$table->integer('hometeam_id')->unsigned();
-			$table->integer('awayteam_id')->unsigned();
+			$table->string('hometeam_id', 100);
+			$table->string('awayteam_id', 100);
 			$table->datetime('start_time');
 			$table->text('venue');
 			$table->text('ref');

@@ -21,8 +21,30 @@ class DatabaseSeeder extends Seeder {
 
         $this->call('SeasonTableSeeder');
         $this->command->info('Season tables seeded!');
+
+        $this->call('MatchTableSeeder');
+        $this->command->info('Match tables seeded!');
 	}
 
+}
+
+class MatchTableSeeder extends Seeder {
+    public function run()
+    {
+        DB::table('matches')->delete();
+
+        Match::create(array(
+        	'season_id' => '1',
+        	'hometeam_id' => 'Vanvik',
+        	'awayteam_id' => 'Bjørgan',
+        	'start_time' => '2014-07-22 18:00',
+        	'venue' => 'Skavelmyra Stadion',
+        	'ref' => 'Joachim Dalum',
+        	'a_ref1' => 'Helseth',
+        	'a_ref2' => 'Dyrvik',
+        	'spectators' => '100'
+        ));
+    }
 }
 
 class SeasonTableSeeder extends Seeder {
@@ -74,18 +96,18 @@ class TeamTableSeeder extends Seeder {
     {
         DB::table('teams')->delete();
 
-        Team::create(array('name' => 'Vanvik'));
-        Team::create(array('name' => 'Vanvik 2'));
-        Team::create(array('name' => 'Bjørgan'));
-        Team::create(array('name' => 'Røros'));
-        Team::create(array('name' => 'Kvik'));
-        Team::create(array('name' => 'Meldal'));
-        Team::create(array('name' => 'Stirndheim TF 2'));
-        Team::create(array('name' => 'Flå'));
-        Team::create(array('name' => 'Frøya'));
-        Team::create(array('name' => 'Kil/Hemne 2'));
-        Team::create(array('name' => 'Hitra'));
-        Team::create(array('name' => 'Byneset'));
-        Team::create(array('name' => 'Buvik 2'));
+        Team::create(array('id' => 'Vanvik'));
+        Team::create(array('id' => 'Vanvik 2'));
+        Team::create(array('id' => 'Bjørgan'));
+        Team::create(array('id' => 'Røros'));
+        Team::create(array('id' => 'Kvik'));
+        Team::create(array('id' => 'Meldal'));
+        Team::create(array('id' => 'Strindheim TF 2'));
+        Team::create(array('id' => 'Flå'));
+        Team::create(array('id' => 'Frøya'));
+        Team::create(array('id' => 'Kil/Hemne 2'));
+        Team::create(array('id' => 'Hitra'));
+        Team::create(array('id' => 'Byneset'));
+        Team::create(array('id' => 'Buvik 2'));
     }
 }

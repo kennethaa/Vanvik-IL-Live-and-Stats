@@ -52,7 +52,7 @@ return array(
 	 *	)
 	 */
 	'menu' => array(
-		'Hendelse' => 'events',
+		'Hendelse' => 'happenings',
 		'Mål' => 'goals',
 		'Kort' => 'cards',
 		'Kamper' => 'matches',

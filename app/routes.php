@@ -17,3 +17,4 @@ Route::get('/api/v1/matches', 'APIv1@showMatches');
 Route::get('/api/v1/players', 'APIv1@showPlayers');
 Route::get('/api/v1/teams', 'APIv1@showTeams');
 Route::get('/api/v1/seasons', 'APIv1@showSeasons');
+Route::get('/api/v1/happenings', 'APIv1@showHappenings');

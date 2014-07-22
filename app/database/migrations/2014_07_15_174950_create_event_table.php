@@ -12,12 +12,12 @@ class CreateEventTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('event', function($table)
+		Schema::create('happenings', function($table)
 		{
 			$table->increments('id');
 			$table->integer('match_id')->unsigned();
 			$table->integer('minute');
-			$table->enum('event', array('chance', 'comment', 'whistle', 'change'));
+			$table->enum('happening', array('chance', 'comment', 'whistle', 'change'));
 			$table->longText('description');
 			$table->timestamps();
 		});
@@ -30,7 +30,7 @@ class CreateEventTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('event');
+		Schema::drop('happenings');
 	}
 
 }

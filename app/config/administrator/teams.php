@@ -16,9 +16,9 @@ return array(
 	 * The display columns
 	 */
 	'columns' => array(
-		'name' => array(
+		'id' => array(
 			'title' => 'Navn',
-			'sort_field' => "name",
+			'sort_field' => 'id',
 		),
 	),
 
@@ -26,7 +26,7 @@ return array(
 	 * The filter set
 	 */
 	'filters' => array(
-		'name' => array(
+		'id' => array(
 			'title' => 'Navn',
 		),
 	),
@@ -35,10 +35,10 @@ return array(
 	 * The editable fields
 	 */
 	'edit_fields' => array(
-		'name' => array(
+		'id' => array(
 			'title' => 'Navn',
 			'type' => 'text',
-			'limit' => 50,
+			'limit' => 100,
 		),
 	),
 

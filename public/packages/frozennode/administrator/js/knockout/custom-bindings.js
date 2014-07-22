@@ -157,6 +157,7 @@
 
 			//Select first item
 			//ADD 'edit_field_<<columnn_name>>'
+
 			if (allBindingsAccessor().attr) 
 			{
 				if (
@@ -166,7 +167,7 @@
 				{
 					if (!allBindingsAccessor().value())
 					{
-						$(element).select2('val', '1');
+						$(element).select2('val', options.data.results[0].id);
 					}
 				}
 			}

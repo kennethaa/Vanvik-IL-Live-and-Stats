@@ -75,4 +75,14 @@ class APIv1 extends BaseController {
 		return $json;
 	}
 
+	public function showHappenings()
+	{
+		$happenings = Happening::all();
+
+		$json = array(
+			'happenings' => $happenings,
+		);
+		return $json;
+	}
+
 }
