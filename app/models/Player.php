@@ -28,5 +28,15 @@ class Player extends Eloquent {
 	{
 		return $this->hasMany('Goal');
 	}
+
+	public static function getActivePlayers()
+	{
+		$players = DB::table('players')
+			->where('inactive', '0')
+			->orderBy('number', 'asc')
+			->get();
+
+		return $players;
+	}
 	
 }

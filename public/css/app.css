@@ -6,3 +6,54 @@ body {
 .navbar {
   margin-bottom: 20px;
 }
+
+th.matches,
+th.goals,
+th.assists,
+th.points,
+th.yellow,
+th.yellowred,
+th.red,
+th.stars {
+	background-position: 50% 3px !important;
+	background-repeat: no-repeat !important;
+	text-indent: -9999em;
+}
+
+th.matches {
+	background-image: url(../img/icon_matches.png) !important;
+}
+
+th.goals {
+	background-image: url(../img/icon_goals.png) !important;
+}
+
+th.assists {
+	background-image: url(../img/icon_assists.png) !important;
+}
+
+th.points {
+	background-image: url(../img/icon_points.png) !important;
+}
+
+th.stars {
+	background-image: url(../img/icon_stars.png) !important;
+}
+
+th.yellow,
+th.yellowred,
+th.red {
+	background-image: url(../img/cards.png) !important;
+}
+
+th.yellow {
+	background-position: 50% -111px !important;
+}
+
+th.yellowred {
+	background-position: 50% -226px !important;
+}
+
+th.red {
+	background-position: 50% 3px !important;
+}

@@ -10,22 +10,10 @@ class APIv1 extends BaseController {
 	public function showMatches()
 	{
 		$matches = Match::all();
-		$teams = Team::all();
 		$players = Player::all();
 
 		foreach ($matches as $key => $value) {
-			//$matches[$key]['hometeam'] = getTeamName($matches[$key]['hometeam_id']);
-			//$matches[$key]['awayteam'] = getTeamName($matches[$key]['awayteam_id']);
-
-			foreach ($teams as $teamKey => $teamValue) {
-				if ($matches[$key]['hometeam_id'] == $teams[$teamKey]['id']) {
-					$matches[$key]['hometeam'] = $teams[$teamKey]['name'];
-				}
-				if ($matches[$key]['awayteam_id'] == $teams[$teamKey]['id']) {
-					$matches[$key]['awayteam'] = $teams[$teamKey]['name'];
-				}
-			}
-
+			
 			foreach ($players as $playerKey => $playerValue) {
 				if ($matches[$key]['star3_id'] == $players[$playerKey]['id']) {
 					$matches[$key]['star3'] = $players[$playerKey]['name'];
@@ -47,10 +35,48 @@ class APIv1 extends BaseController {
 
 	public function showPlayers()
 	{
-		$players = Player::all();
+		$players = Player::getActivePlayers();
+		$currentSeason = Season::getCurrentSeason();
+		$ateamMatches = Match::getMatchesInSeason($currentSeason[0]->id, 'Vanvik');
+		$bteamMatches = Match::getMatchesInSeason($currentSeason[0]->id, 'Vanvik 2');
+
+		foreach ($players as $playerKey => $playerValue) {
+
+			$ateam_stars = 0;
+			$bteam_stars = 0;
+
+			foreach ($ateamMatches as $matchKey => $matchValue) {
+				if ($ateamMatches[$matchKey]->star3_id == $players[$playerKey]->id) {
+					$ateam_stars = $ateam_stars + 3;
+				}
+				if ($ateamMatches[$matchKey]->star2_id == $players[$playerKey]->id) {
+					$ateam_stars = $ateam_stars + 2;
+				}
+				if ($ateamMatches[$matchKey]->star1_id == $players[$playerKey]->id) {
+					$ateam_stars++;
+				}
+			}
+
+			foreach ($bteamMatches as $matchKey => $matchValue) {
+				if ($bteamMatches[$matchKey]->star3_id == $players[$playerKey]->id) {
+					$bteam_stars = $bteam_stars + 3;
+				}
+				if ($bteamMatches[$matchKey]->star2_id == $players[$playerKey]->id) {
+					$bteam_stars = $bteam_stars + 2;
+				}
+				if ($bteamMatches[$matchKey]->star1_id == $players[$playerKey]->id) {
+					$bteam_stars++;
+				}
+			}
+
+			$players[$playerKey]->ateam_stars = $ateam_stars;
+			$players[$playerKey]->bteam_stars = $bteam_stars;
+
+		}
 
 		$json = array(
 			'players' => $players,
+			'current_season' => $currentSeason,
 		);
 		return $json;
 	}

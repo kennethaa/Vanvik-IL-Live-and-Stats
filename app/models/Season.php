@@ -21,4 +21,14 @@ class Season extends Eloquent {
 	{
 		return $this->hasMany('Match');
 	}
+
+	public static function getCurrentSeason()
+	{
+		$currentSeason = DB::table('seasons')
+			->orderBy('id', 'desc')
+			->take('1')
+			->get();
+
+		return $currentSeason;
+	}
 }

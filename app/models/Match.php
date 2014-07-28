@@ -71,4 +71,16 @@ class Match extends Eloquent {
 		return $this->hasMany('Card');
 	}
 
+	//API
+
+	public static function getMatchesInSeason($season_id, $team_id) {
+		$matches = DB::table('matches')
+			->where('season_id', $season_id)
+			->where('hometeam_id', $team_id)
+			->orWhere('awayteam_id', $team_id)
+			->get();
+
+		return $matches;
+	}
+
 }
