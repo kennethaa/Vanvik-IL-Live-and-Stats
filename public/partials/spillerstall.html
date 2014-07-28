@@ -1,0 +1,47 @@
+<div class="col-md-12">
+	<div class="page-header">
+		<h2>Spillerstall</h2>
+	</div>
+
+	<!-- LOADING ICON =============================================== -->
+	<!-- show loading icon if the loading variable is set to true -->
+	<p class="text-center" ng-show="loading"><span class="fa fa-spinner fa-5x fa-spin"></span></p>
+
+	<!-- THE PLAYERS =============================================== -->
+	<!-- hide the players if the loading variable is true -->
+	<div class="table-responsive">
+		<table class="table table-condensed table-hover">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Navn</th>
+					<th>Lag</th>
+					<th>Kamper</th>
+					<th>Mål</th>
+					<th>Assists</th>
+					<th>Poeng</th>
+					<th>Gule kort</th>
+					<th>To gule kort</th>
+					<th>Røde kort</th>
+					<th>Stjerner</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-hide="loading" ng-repeat="player in players">
+					<td>{{ player.number }}</td>
+					<td>{{ player.name }}</td>
+					<td>A-lag<div>B-lag</div></td>
+					<td>0 (0)<div>0 (0)</div></td>
+					<td>0<div>0</div></td>
+					<td>0<div>0</div></td>
+					<td>0<div>0</div></td>
+					<td>0<div>0</div></td>
+					<td>0<div>0</div></td>
+					<td>0<div>0</div></td>
+					<td>0<div>0</div></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+</div>

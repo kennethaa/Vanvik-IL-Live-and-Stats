@@ -1,0 +1,18 @@
+<div class="col-md-12">
+	<div class="page-header">
+		<h2>Vanvik IL Live</h2>
+		<h4>Følg Vanvik IL live her</h4>
+	</div>
+
+	<!-- LOADING ICON =============================================== -->
+	<!-- show loading icon if the loading variable is set to true -->
+	<p class="text-center" ng-show="loading"><span class="fa fa-spinner fa-5x fa-spin"></span></p>
+
+	<!-- THE COMMENTS =============================================== -->
+	<!-- hide these comments if the loading variable is true -->
+	<div class="happenings" ng-hide="loading" ng-repeat="happening in happenings">
+		<h3>Happening #{{ happening.id }} <small>minute: {{ happening.minute }}</h3>
+		<p>{{ happening.description }}</p>
+
+	</div>
+</div>

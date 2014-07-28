@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Players model config
+ * Seasons model config
  */
 
 return array(

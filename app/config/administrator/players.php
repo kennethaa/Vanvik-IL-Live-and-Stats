@@ -42,9 +42,9 @@ return array(
 			'type' => 'enum',
 			'options' => array(
 		        'goalkeeper' => 'Keeper',
-		        'defender' => 'Forsvarer',
-		        'midtfielder' => 'Midtbanespiller',
-		        'striker' => 'Spiss'
+		        'defender' => 'Forsvar',
+		        'midtfielder' => 'Midtbane',
+		        'striker' => 'Angrep'
 		    ),
 		),
 		'name' => array(
@@ -74,9 +74,9 @@ return array(
 		    'title' => 'Posisjon',
 		    'options' => array(
 		        'goalkeeper' => 'Keeper',
-		        'defender' => 'Forsvarer',
-		        'midtfielder' => 'Midtbanespiller',
-		        'striker' => 'Spiss'
+		        'defender' => 'Forsvar',
+		        'midtfielder' => 'Midtbane',
+		        'striker' => 'Angrep'
 		    ),
 		),
 		'name' => array(
