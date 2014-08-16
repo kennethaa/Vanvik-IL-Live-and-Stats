@@ -57,3 +57,7 @@ th.yellowred {
 th.red {
 	background-position: 50% 3px !important;
 }
+
+td#vertical-middle {
+	vertical-align: middle;
+}

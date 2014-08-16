@@ -15,4 +15,14 @@ class Happening extends Eloquent {
 		return $this->belongsTo('Match');
 	}
 
+	public static function getHappeningsInMatch($match_id)
+	{
+		$happenings = DB::table('happenings')
+			->where('match_id', '=', $match_id)
+			->orderBy('minute', 'desc')
+			->get();
+
+		return $happenings;
+	}
+
 }

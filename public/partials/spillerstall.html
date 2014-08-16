@@ -28,17 +28,19 @@
 			</thead>
 			<tbody>
 				<tr ng-hide="loading" ng-repeat="player in players">
-					<td>{{ player.number }}</td>
-					<td>{{ player.name }}</td>
+					<td id="vertical-middle">{{ player.number }}</td>
+					<td id="vertical-middle">{{ player.name }}</td>
 					<td>A-lag<div>B-lag</div></td>
-					<td class="text-center">0 (0)<div>0 (0)</div></td>
-					<td class="text-center">0<div>0</div></td>
-					<td class="text-center">0<div>0</div></td>
-					<td class="text-center">0<div>0</div></td>
-					<td class="text-center">0<div>0</div></td>
-					<td class="text-center">0<div>0</div></td>
-					<td class="text-center">0<div>0</div></td>
-					<td class="text-center">{{ player.ateam_stars }}<div>{{ player.bteam_stars }}</div></td>
+					<td class="text-center">{{ player.ateam.starting }} ({{ player.ateam.sub }})
+						<div>{{ player.bteam.starting }} ({{ player.bteam.sub }})</div>
+					</td>
+					<td class="text-center">{{ player.ateam.goals }}<div>{{ player.bteam.goals }}</div></td>
+					<td class="text-center">{{ player.ateam.assists }}<div>{{ player.bteam.assists }}</div></td>
+					<td class="text-center">{{ player.ateam.points }}<div>{{ player.bteam.points }}</div></td>
+					<td class="text-center">{{ player.ateam.yellow_cards }}<div>{{ player.bteam.yellow_cards }}</div></td>
+					<td class="text-center">{{ player.ateam.yellowred_cards }}<div>{{ player.bteam.yellowred_cards }}</div></td>
+					<td class="text-center">{{ player.ateam.red_cards }}<div>{{ player.bteam.red_cards }}</div></td>
+					<td class="text-center">{{ player.ateam.stars }}<div>{{ player.bteam.stars }}</div></td>
 				</tr>
 			</tbody>
 		</table>

@@ -28,7 +28,8 @@ Route::group(array('prefix' => 'api/v1'), function() {
 	Route::get('players', 'APIv1@showPlayers');
 	Route::get('teams', 'APIv1@showTeams');
 	Route::get('seasons', 'APIv1@showSeasons');
-	Route::get('happenings', 'APIv1@showHappenings');
+	Route::get('live_feed', 'APIv1@showLiveFeed');
+	Route::get('live_feed_result', 'APIv1@showLiveFeedResult');
 
 });
 

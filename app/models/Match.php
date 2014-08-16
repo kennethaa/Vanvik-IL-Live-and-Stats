@@ -83,4 +83,14 @@ class Match extends Eloquent {
 		return $matches;
 	}
 
+	public static function getCurrentMatch()
+	{
+		$currentMatch = DB::table('matches')
+			->orderBy('id', 'desc')
+			->take('1')
+			->get();
+
+		return $currentMatch;
+	}
+
 }

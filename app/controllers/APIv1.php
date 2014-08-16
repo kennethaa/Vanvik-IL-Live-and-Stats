@@ -42,41 +42,157 @@ class APIv1 extends BaseController {
 
 		foreach ($players as $playerKey => $playerValue) {
 
-			$ateam_stars = 0;
-			$bteam_stars = 0;
+			$ateam = new stdClass;
+			$bteam = new stdClass;
+
+			$ateam->starting = 0;
+			$bteam->starting = 0;
+
+			$ateam->sub = 0;
+			$bteam->sub = 0;
+
+			$ateam->goals = 0;
+			$bteam->goals = 0;
+
+			$ateam->assists = 0;
+			$bteam->assists = 0;
+
+			$ateam->points = 0;
+			$bteam->points = 0;
+
+			$ateam->yellow_cards = 0;
+			$bteam->yellow_cards = 0;
+
+			$ateam->yellowred_cards = 0;
+			$bteam->yellowred_cards = 0;
+
+			$ateam->red_cards = 0;
+			$bteam->red_cards = 0;
+
+			$ateam->stars = 0;
+			$bteam->stars = 0;
 
 			foreach ($ateamMatches as $matchKey => $matchValue) {
 				if ($ateamMatches[$matchKey]->star3_id == $players[$playerKey]->id) {
-					$ateam_stars = $ateam_stars + 3;
+					$ateam->stars = $ateam->stars + 3;
 				}
 				if ($ateamMatches[$matchKey]->star2_id == $players[$playerKey]->id) {
-					$ateam_stars = $ateam_stars + 2;
+					$ateam->stars = $ateam->stars + 2;
 				}
 				if ($ateamMatches[$matchKey]->star1_id == $players[$playerKey]->id) {
-					$ateam_stars++;
+					$ateam->stars++;
+				}
+
+				$appearancesStarting = Match::find($ateamMatches[$matchKey]->id)->starting;
+
+				foreach ($appearancesStarting as $appearancesStartingKey => $value) {
+					if ($appearancesStarting[$appearancesStartingKey]->id == $players[$playerKey]->id) {
+						$ateam->starting++;
+					}
+				}
+
+				$appearancesSubstitute = Match::find($ateamMatches[$matchKey]->id)->substitute;
+
+				foreach ($appearancesSubstitute as $appearancesSubKey => $value) {
+					if ($appearancesSubstitute[$appearancesSubKey]->id == $players[$playerKey]->id) {
+						$ateam->sub++;
+					}
+				}
+
+				$goals = Match::find($ateamMatches[$matchKey]->id)->goals;
+
+				foreach ($goals as $goalsKey => $value) {
+					if ($goals[$goalsKey]->scorer_id == $players[$playerKey]->id) {
+						$ateam->goals++;
+						$ateam->points = $ateam->points + 2;
+					}
+					if ($goals[$goalsKey]->assist_id == $players[$playerKey]->id) {
+						$ateam->assists++;
+						$ateam->points++;
+					}
+				}
+
+				$cards = Match::find($ateamMatches[$matchKey]->id)->cards;
+
+				foreach ($cards as $cardsKey => $value) {
+					if ($cards[$cardsKey]->player_id == $players[$playerKey]->id) {
+						if ($cards[$cardsKey]->happening == 'yellowcard') {
+							$ateam->yellow_cards++;
+						}
+						if ($cards[$cardsKey]->happening == 'yellowredcard') {
+							$ateam->yellowred_cards++;
+						}
+						if ($cards[$cardsKey]->happening == 'redcard') {
+							$ateam->red_cards++;
+						}
+					}
 				}
 			}
 
 			foreach ($bteamMatches as $matchKey => $matchValue) {
 				if ($bteamMatches[$matchKey]->star3_id == $players[$playerKey]->id) {
-					$bteam_stars = $bteam_stars + 3;
+					$bteam->stars = $bteam->stars + 3;
 				}
 				if ($bteamMatches[$matchKey]->star2_id == $players[$playerKey]->id) {
-					$bteam_stars = $bteam_stars + 2;
+					$bteam->stars = $bteam->stars + 2;
 				}
 				if ($bteamMatches[$matchKey]->star1_id == $players[$playerKey]->id) {
-					$bteam_stars++;
+					$bteam->stars++;
+				}
+
+				$appearancesStarting = Match::find($bteamMatches[$matchKey]->id)->starting;
+
+				foreach ($appearancesStarting as $appearancesStartingKey => $value) {
+					if ($appearancesStarting[$appearancesStartingKey]->id == $players[$playerKey]->id) {
+						$bteam->starting++;
+					}
+				}
+
+				$appearancesSubstitute = Match::find($bteamMatches[$matchKey]->id)->substitute;
+
+				foreach ($appearancesSubstitute as $appearancesSubKey => $value) {
+					if ($appearancesSubstitute[$appearancesSubKey]->id == $players[$playerKey]->id) {
+						$bteam->sub++;
+					}
+				}
+
+				$goals = Match::find($bteamMatches[$matchKey]->id)->goals;
+
+				foreach ($goals as $goalsKey => $value) {
+					if ($goals[$goalsKey]->scorer_id == $players[$playerKey]->id) {
+						$bteam->goals++;
+						$bteam->points = $bteam->points + 2;
+					}
+					if ($goals[$goalsKey]->assist_id == $players[$playerKey]->id) {
+						$bteam->assists++;
+						$bteam->points++;
+					}
+				}
+
+				$cards = Match::find($bteamMatches[$matchKey]->id)->cards;
+
+				foreach ($cards as $cardsKey => $value) {
+					if ($cards[$cardsKey]->player_id == $players[$playerKey]->id) {
+						if ($cards[$cardsKey]->happening == 'yellowcard') {
+							$ateam->yellow_cards++;
+						}
+						if ($cards[$cardsKey]->happening == 'yellowredcard') {
+							$ateam->yellowred_cards++;
+						}
+						if ($cards[$cardsKey]->happening == 'redcard') {
+							$ateam->red_cards++;
+						}
+					}
 				}
 			}
 
-			$players[$playerKey]->ateam_stars = $ateam_stars;
-			$players[$playerKey]->bteam_stars = $bteam_stars;
+			$players[$playerKey]->ateam = $ateam;
+			$players[$playerKey]->bteam = $bteam;
 
 		}
 
 		$json = array(
-			'players' => $players,
-			'current_season' => $currentSeason,
+			'players' => $players
 		);
 		return $json;
 	}
@@ -101,12 +217,33 @@ class APIv1 extends BaseController {
 		return $json;
 	}
 
-	public function showHappenings()
+	public function showLiveFeed()
 	{
-		$happenings = Happening::all();
+		$currentMatch = Match::getCurrentMatch();
+		$happenings = Happening::getHappeningsInMatch($currentMatch[0]->id);
+
+		$starting = Match::find($currentMatch[0]->id)->starting;
+		$substitute = Match::find($currentMatch[0]->id)->substitute;
 
 		$json = array(
+			'matchinfo' => $currentMatch,
+			'players' => array(
+				'starting' => $starting,
+				'substitute' => $substitute,
+			),
 			'happenings' => $happenings,
+		);
+		return $json;
+	}
+
+	public function showLiveFeedResult()
+	{
+		$currentMatch = Match::getCurrentMatch();
+		$matchScore = Goal::getMatchScore($currentMatch[0]->id);
+
+		$json = array(
+			'matchinfo' => $currentMatch,
+			'result' => $matchScore
 		);
 		return $json;
 	}

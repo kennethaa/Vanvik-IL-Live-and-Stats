@@ -23,4 +23,22 @@ class Goal extends Eloquent {
 		return $this->belongsTo('Player');
 	}
 
+	public static function getMatchScore($match_id)
+	{
+		$homeScore = DB::table('goals')
+			->where('match_id', '=', $match_id)
+			->where('hometeam', '=', 1)
+			->count();
+
+		$awayScore = DB::table('goals')
+			->where('match_id', '=', $match_id)
+			->where('hometeam', '=', 0)
+			->count();
+
+		return  array(
+			'home_score' => $homeScore,
+			'away_score' => $awayScore
+		);
+	}
+
 }
