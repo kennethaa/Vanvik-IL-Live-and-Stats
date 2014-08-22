@@ -32,7 +32,7 @@ angular.module('myApp.controllers', [])
 
 	    		console.log('Resultatskifte');
 
-	    		
+
 	    	}
 		});
 	};

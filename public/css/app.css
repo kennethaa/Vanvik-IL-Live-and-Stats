@@ -1,5 +1,23 @@
 .navbar-static-top {
-  	margin-bottom: 19px;
+  	margin-bottom: 0;
+}
+
+.navbar-inverse {
+	background-color: transparent;
+}
+
+.navbar-static-top {
+	border-width: 0 0 0;
+}
+
+.navbar-inverse .navbar-nav>.active>a, 
+.navbar-inverse .navbar-nav>.active>a:hover, 
+.navbar-inverse .navbar-nav>.active>a:focus {
+	background-color: transparent;
+}
+
+div.container {
+	background: rgba(0, 0, 0, 0.75);
 }
 
 html, body {
