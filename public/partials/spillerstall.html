@@ -1,19 +1,17 @@
 <div class="col-md-12">
-	<div class="page-header">
-		<h2>Spillerstall</h2>
-	</div>
-
 	<!-- LOADING ICON =============================================== -->
 	<!-- show loading icon if the loading variable is set to true -->
 	<p class="text-center" ng-show="loading"><span class="fa fa-spinner fa-5x fa-spin"></span></p>
 
 	<!-- THE PLAYERS =============================================== -->
 	<!-- hide the players if the loading variable is true -->
-	<div class="table-responsive">
-		<table class="table table-condensed table-hover">
+	<div class="panel panel-default">
+        <div class="panel-heading">SPILLERSTALL</div>
+        
+        <table class="table table-condensed table-hover">
 			<thead>
 				<tr>
-					<th title="Nummer">#</th>
+					<th title="Nummer" class="text-center">#</th>
 					<th>Navn</th>
 					<th>Lag</th>
 					<th title="Kamper" class="matches text-center">K</th>
@@ -28,7 +26,7 @@
 			</thead>
 			<tbody>
 				<tr ng-hide="loading" ng-repeat="player in players">
-					<td id="vertical-middle">{{ player.number }}</td>
+					<td class="text-center vertical-middle">{{ player.number }}</td>
 					<td id="vertical-middle">{{ player.name }}</td>
 					<td>A-lag<div>B-lag</div></td>
 					<td class="text-center">{{ player.ateam.starting }} ({{ player.ateam.sub }})
@@ -44,6 +42,5 @@
 				</tr>
 			</tbody>
 		</table>
-	</div>
-	
+    </div>
 </div>

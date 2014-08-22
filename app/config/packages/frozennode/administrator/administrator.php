@@ -52,14 +52,14 @@ return array(
 	 *	)
 	 */
 	'menu' => array(
+		'Kamper' => 'matches',
 		'Hendelse' => 'happenings',
 		'Mål' => 'goals',
 		'Kort' => 'cards',
-		'Kamper' => 'matches',
 		'Spillere' => 'players',
 		'Lag' => 'teams',
 		'Sesonger' => 'seasons',
-		'Innstillinger' => 'settings.site',
+		//'Innstillinger' => 'settings.site',
 	),
 
 	/**
@@ -94,7 +94,7 @@ return array(
 	 *
 	 * @type string
 	 */
-	'home_page' => 'settings.site',
+	'home_page' => 'matches',
 
 	/**
 	 * The route to which the user will be taken when they click the "back to site" button

@@ -32,29 +32,30 @@
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
+    
+
+    <!-- Navbar -->
+    <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Vanvik IL Live &amp; Stats</a>
+            </div>
+            <div class="collapse navbar-collapse" ng-controller="HeaderController">
+                <ul class="nav navbar-nav">
+                    <li ng-class="{ active: isActive('/live')}"><a href="#/live">Live</a></li>
+                    <li ng-class="{ active: isActive('/spillerstall')}"><a href="#/spillerstall">Spillerstall</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div><!--/.container -->
+    </div>
+
     <div class="container">
-
-        <!-- Static navbar -->
-        <div class="navbar navbar-default" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Vanvik IL Live &amp; Stats</a>
-                </div>
-                <div class="collapse navbar-collapse" ng-controller="HeaderController">
-                    <ul class="nav navbar-nav">
-                        <li ng-class="{ active: isActive('/live')}"><a href="#/live">Live</a></li>
-                        <li ng-class="{ active: isActive('/spillerstall')}"><a href="#/spillerstall">Spillerstall</a></li>
-                    </ul>
-                </div><!--/.nav-collapse -->
-            </div><!--/.container-fluid -->
-        </div>
-
 
         <div ng-view></div>
 
