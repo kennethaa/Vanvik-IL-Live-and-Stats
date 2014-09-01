@@ -1,5 +1,5 @@
 .navbar-static-top {
-  	margin-bottom: 0;
+  	margin-bottom: 20px;
 }
 
 .navbar-inverse {
@@ -16,8 +16,41 @@
 	background-color: transparent;
 }
 
-div.container {
+.container-fluid {
 	background: rgba(0, 0, 0, 0.75);
+	min-height: 100%;
+}
+
+.panel {
+	color: #fff;
+	border: none;
+}
+
+.score-panel {
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.panel > .panel-heading {
+	color: #fff;
+	background-color: rgba(0, 0, 0, 0.5);
+	font-weight: bold;
+}
+
+.panel > .score {
+	border-bottom: none;
+}
+
+.panel > .score h3 {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#hometeam {
+	margin-right: 20px;
+}
+
+#awayteam {
+	margin-left: 20px;
 }
 
 html, body {
@@ -33,6 +66,7 @@ body {
 	background-attachment: fixed;
 }
 
+/****************************************************** STATS **/
 th.matches,
 th.goals,
 th.assists,
@@ -84,6 +118,80 @@ th.red {
 	background-position: 50% 3px !important;
 }
 
-td.vertical-middle {
+table > tbody > tr > td.vertical-middle {
 	vertical-align: middle;
 }
+
+.match-info-description {
+	width: 25%;
+}
+
+.player-number {
+	width: 10%;
+}
+/******************************************************************END OF STATS **/
+
+
+/****************************************************** LIVE FEED **/
+.live-feed-minute,
+.live-feed-happening {
+	width: 50px;
+}
+
+.live-feed-description {
+
+}
+
+.live-feed-happening-span {
+	width: 20px;
+	height: 20px;
+	margin-top: 5px;
+	display: inline-block;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.live-feed-comment,
+.live-feed-chance,
+.live-feed-whistle,
+.live-feed-change,
+.live-feed-yellowcard,
+.live-feed-yellowredcard,
+.live-feed-redcard,
+.live-feed-goal {
+	background-image: url(../img/matchcommentary-sprite.png) !important;
+}
+
+.live-feed-comment {
+	background-position: left -721px;
+}
+
+.live-feed-chance {
+	background-position: left -401px;
+}
+
+.live-feed-whistle {
+	background-position: left -541px;
+}
+
+.live-feed-change {
+	background-position: left -581px;
+}
+
+.live-feed-yellowcard {
+	background-position: left -261px;
+}
+
+.live-feed-yellowredcard {
+	background-position: left -281px;
+}
+
+.live-feed-redcard {
+	background-position: left -301px;
+}
+
+.live-feed-goal {
+	background-position: left -81px;
+}
+
+/******************************************************************END OF LIVE FEED **/

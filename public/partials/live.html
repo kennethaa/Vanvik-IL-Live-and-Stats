@@ -1,94 +1,46 @@
 <!-- LOADING ICON =============================================== -->
 <!-- show loading icon if the loading variable is set to true -->
-<p class="text-center" ng-show="loading"><span class="fa fa-spinner fa-5x fa-spin"></span></p>
+<p class="text-center" ng-hide="warning" ng-show="loading"><span class="fa fa-spinner fa-5x fa-spin"></span></p>
+
+<div ng-show="warning" class="alert alert-danger text-center" role="alert">{{ warningMessage }}</div>
 
 <div ng-hide="loading">
-<div class="row">
-    <div class="col-sm-5">
-        <div class="panel panel-default">
-            <div class="panel-heading"><h1 class="text-center">{{ matchinfo.hometeam_id }}</h1></div>
-        </div>
-    </div>
-
-    <div class="col-sm-2">
-        <div class="panel panel-default">
-            <div class="panel-heading"><h1 class="text-center" id="stillingen">{{ result.home_score }}-{{ result.away_score }}</h1></div>
-        </div>
-    </div>
-
-    <div class="col-sm-5">
-        <div class="panel panel-default">
-            <div class="panel-heading"><h1 class="text-center">{{ matchinfo.awayteam_id }}</h1></div>
+<div class="row score-row">
+    <div class="col-sm-12">
+        <div class="panel panel-default score-panel">
+            <div class="panel-heading score">
+                <h4 class="text-center">
+                    <span id="hometeam">{{ matchinfo.hometeam_id }}</span>
+                    <span id="score">{{ result.hometeam_score }}-{{ result.awayteam_score }}</span>
+                    <span id="awayteam">{{ matchinfo.awayteam_id }}</span>
+                </h4>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="row">   
-    <div class="col-md-8">
-        <!--live feed -->
-        <div class="panel panel-default">
-            <div class="panel-heading">LIVE FEED</div>
-            
-            <table class="table" id="meldinger">
-                <tbody>
-                    <tr class="live-feed-row" ng-repeat="happening in happenings">
-                        <td class="live-feed-minute">{{ happening.minute }}'</td>
-                        <td class="live-feed-happening live-feed-{{ happening.happening }}">{{ happening.happening }}</td>
-                        <td class="live-feed-description">{{ happening.description }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <!--live feed / -->
-    </div>
-    <div class="col-md-4">
+<div class="row">
+    <div class="col-md-3">
 
-        <!--chat -->
-        <div class="panel panel-default">
-            <div class="panel-heading">DISKUSJON</div>
-            <div class="panel-body" id="disqus_thread"></div>
-            <script type="text/javascript">
-                /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-                var disqus_shortname = 'vanvikillive'; // required: replace example with your forum shortname
-        
-                /* * * DON'T EDIT BELOW THIS LINE * * */
-                (function() {
-                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                })();
-            </script>
-            <noscript>Vennligst aktiver JavaScript for å vise diskusjon</noscript>
-            
-        </div>
-        <!--chat / -->
-        
         <!--match info -->
         <div class="panel panel-default">
-            <div class="panel-heading">KAMP INFO</div>
+            <div class="panel-heading">INFO</div>
              <!-- Table -->
              <table class="table">
-       
-                <tr>
-                    <th>4. DIVISJON MENN AVDELING 2</th>
-                </tr>
-                
-             </table>
-
-             <table class="table">
                 <tbody>
-                    <tr class="match-info-venue"><td>Stadion:</td><td>{{ matchinfo.venue }}</td></tr>
-                    <tr class="match-info-datetime"><td>Kampstart:</td><td>{{ matchinfo.start_time }}</td></tr>
-                    <tr class="match-info-ref"><td>Dommer:</td><td>{{ matchinfo.ref }}</td></tr>
-                    <tr class="match-info-aref1"><td>AD 1:</td><td>{{ matchinfo.a_ref1 }}</td></tr>
-                    <tr class="match-info-aref2"><td>AD 2:</td><td>{{ matchinfo.a_ref2 }}</td></tr>
-                    <tr class="match-info-spectators"><td>Tilskuertall:</td><td>{{ matchinfo.spectators }}</td></tr>
+                    <tr class="match-info-division"><td colspan="2">4. DIVISJON MENN AVDELING 2</td></tr>
+                    <tr class="match-info-venue"><td class="match-info-description">Stadion:</td><td>{{ matchinfo.venue }}</td></tr>
+                    <tr class="match-info-datetime"><td class="match-info-description">Kampstart:</td><td>{{ matchinfo.start_time }}</td></tr>
+                    <tr class="match-info-ref"><td class="match-info-description">Dommer:</td><td>{{ matchinfo.ref }}</td></tr>
+                    <tr class="match-info-aref1"><td class="match-info-description">AD 1:</td><td>{{ matchinfo.a_ref1 }}</td></tr>
+                    <tr class="match-info-aref2"><td class="match-info-description">AD 2:</td><td>{{ matchinfo.a_ref2 }}</td></tr>
+                    <tr class="match-info-spectators"><td class="match-info-description">Tilskuertall:</td><td>{{ matchinfo.spectators }}</td></tr>
                 </tbody>
              </table>
         </div>
     
         <div class="panel panel-default">
-            <div class="panel-heading">LAGOPPSTILLING VANVIK</div>
+            <div class="panel-heading">STARTOPPSTILLING VANVIK</div>
              
             <table class="table table-condensed">
                 <tbody>
@@ -101,7 +53,7 @@
         </div>
     
         <div class="panel panel-default">
-            <div class="panel-heading">INNBYTTERE</div>
+            <div class="panel-heading">INNBYTTERE VANVIK</div>
              
             <table class="table table-condensed">
                 <tbody>
@@ -115,6 +67,38 @@
         
     </div>
     <!--match info  / -->
+    
+    <div class="col-md-6">
+        <!--live feed -->
+        <div class="panel panel-default">
+            <div class="panel-heading">LIVE FEED</div>
+            
+            <table class="table" id="happenings">
+                <tbody>
+                    <tr class="live-feed-row" ng-repeat="happening in happenings">
+                        <td class="live-feed-minute vertical-middle">{{ happening.minute }}'</td>
+                        <td class="live-feed-happening vertical-middle"><span class="live-feed-happening-span live-feed-{{ happening.happening }}"></span></td>
+                        <td class="live-feed-description vertical-middle">{{ happening.description }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--live feed / -->
+    </div>
+    <div class="col-md-3">
+
+        <!--chat -->
+        <div class="panel panel-default">
+            <div class="panel-heading">DISKUSJON</div>
+            <div class="panel-body" id="disqus_thread">
+                <dir-disqus disqus-shortname="vanvikillivestats"
+                    disqus-identifier="{{ identifier }}"
+                    disqus-url="{{ url }}">
+                </dir-disqus>
+            </div>
+        </div>
+        <!--chat / -->
+    </div>
                 
 </div><!-- /.row -->
 </div>

@@ -20,4 +20,14 @@ class Card extends Eloquent {
 		return $this->belongsTo('Player');
 	}
 
+	public static function getCardsInMatch($match_id)
+	{
+		$cards = DB::table('cards')
+			->where('match_id', '=', $match_id)
+			->orderBy('minute', 'desc')
+			->get();
+
+		return $cards;
+	}
+
 }

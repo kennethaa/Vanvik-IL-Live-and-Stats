@@ -12,7 +12,8 @@
 
 		<!-- Bootstrap 3.0: Latest compiled and minified CSS -->
 		<!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"> -->
-		<link rel="stylesheet" href="{{ asset('packages/rydurham/sentinel/css/bootstrap.min.css') }}">
+		<!-- Bootstrap core CSS -->
+    	<link rel="stylesheet" href="/css/bootstrap.min.css">
 
 		<style>
 		@section('styles')

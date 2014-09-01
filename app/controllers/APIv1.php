@@ -217,33 +217,55 @@ class APIv1 extends BaseController {
 		return $json;
 	}
 
-	public function showLiveFeed()
+	public function showCurrentMatch()
 	{
 		$currentMatch = Match::getCurrentMatch();
+
+		$json = array(
+			'matchinfo' => $currentMatch,
+		);
+		return $json;
+	}
+
+	public function showLiveFeed($match_id = null)
+	{
+		if ($match_id == null) {
+			$currentMatch = Match::getCurrentMatch();
+		}
+		else {
+			$currentMatch = Match::getMatch($match_id);
+		}
+
+		if (!$currentMatch) {
+			return array(
+				'warning' => "Can't find any match with that id"
+			);
+		}
+
 		$happenings = Happening::getHappeningsInMatch($currentMatch[0]->id);
+		$goals = Goal::getGoalsInMatch($currentMatch[0]->id);
+		$cards = Card::getCardsInMatch($currentMatch[0]->id);
+
+		$happeningsGoalsCards = array_merge($happenings, $goals, $cards);
+
+		usort($happeningsGoalsCards, function($a, $b) {
+		    return $b->minute - $a->minute;
+		});
+
+		$matchScore = Goal::getMatchScore($currentMatch[0]->id);
 
 		$starting = Match::find($currentMatch[0]->id)->starting;
 		$substitute = Match::find($currentMatch[0]->id)->substitute;
 
 		$json = array(
+			'match_id' => $match_id,
 			'matchinfo' => $currentMatch,
+			'result' => $matchScore,
 			'players' => array(
 				'starting' => $starting,
 				'substitute' => $substitute,
 			),
-			'happenings' => $happenings,
-		);
-		return $json;
-	}
-
-	public function showLiveFeedResult()
-	{
-		$currentMatch = Match::getCurrentMatch();
-		$matchScore = Goal::getMatchScore($currentMatch[0]->id);
-
-		$json = array(
-			'matchinfo' => $currentMatch,
-			'result' => $matchScore
+			'happenings' => $happeningsGoalsCards
 		);
 		return $json;
 	}

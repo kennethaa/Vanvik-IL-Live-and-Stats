@@ -93,4 +93,13 @@ class Match extends Eloquent {
 		return $currentMatch;
 	}
 
+	public static function getMatch($match_id)
+	{
+		$match = DB::table('matches')
+			->where('id', $match_id)
+			->get();
+
+		return $match;
+	}
+
 }

@@ -36,9 +36,23 @@ class Goal extends Eloquent {
 			->count();
 
 		return  array(
-			'home_score' => $homeScore,
-			'away_score' => $awayScore
+			'hometeam_score' => $homeScore,
+			'awayteam_score' => $awayScore
 		);
+	}
+
+	public static function getGoalsInMatch($match_id)
+	{
+		$goals = DB::table('goals')
+			->where('match_id', '=', $match_id)
+			->orderBy('minute', 'desc')
+			->get();
+
+		foreach ($goals as $goalsKey => $value) {
+			$goals[$goalsKey]->happening = 'goal';
+		}
+
+		return $goals;
 	}
 
 }
