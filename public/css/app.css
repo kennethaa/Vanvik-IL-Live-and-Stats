@@ -134,7 +134,7 @@ table > tbody > tr > td.vertical-middle {
 
 /****************************************************** LIVE FEED **/
 .live-feed-row-goal {
-	background-color: green;
+	background-color: rgba(119, 179, 0, 0.4);
 }
 
 .live-feed-minute,
