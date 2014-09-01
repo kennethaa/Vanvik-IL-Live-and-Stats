@@ -242,6 +242,7 @@ class APIv1 extends BaseController {
 			);
 		}
 
+		$season = Season::getSeason($currentMatch[0]->season_id);
 		$happenings = Happening::getHappeningsInMatch($currentMatch[0]->id);
 		$goals = Goal::getGoalsInMatch($currentMatch[0]->id);
 		$cards = Card::getCardsInMatch($currentMatch[0]->id);
@@ -260,6 +261,7 @@ class APIv1 extends BaseController {
 		$json = array(
 			'match_id' => $match_id,
 			'matchinfo' => $currentMatch,
+			'season' => $season,
 			'result' => $matchScore,
 			'players' => array(
 				'starting' => $starting,

@@ -35,6 +35,7 @@ angular.module('myApp.controllers', [])
 					return;
 				}
 		    	$scope.happenings = data.happenings;
+		    	$scope.season = data.season[0].name;
 				$scope.matchinfo = data.matchinfo[0];
 				$scope.starting = data.players.starting;
 				$scope.substitute = data.players.substitute;

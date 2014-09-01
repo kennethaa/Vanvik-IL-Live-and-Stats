@@ -28,7 +28,7 @@
              <!-- Table -->
              <table class="table">
                 <tbody>
-                    <tr class="match-info-division"><td colspan="2">4. DIVISJON MENN AVDELING 2</td></tr>
+                    <tr class="match-info-division"><td colspan="2">{{ season }}</td></tr>
                     <tr class="match-info-venue"><td class="match-info-description">Stadion:</td><td>{{ matchinfo.venue }}</td></tr>
                     <tr class="match-info-datetime"><td class="match-info-description">Kampstart:</td><td>{{ matchinfo.start_time }}</td></tr>
                     <tr class="match-info-ref"><td class="match-info-description">Dommer:</td><td>{{ matchinfo.ref }}</td></tr>
@@ -75,7 +75,7 @@
             
             <table class="table" id="happenings">
                 <tbody>
-                    <tr class="live-feed-row" ng-repeat="happening in happenings">
+                    <tr class="live-feed-row live-feed-row-{{ happening.happening }}" ng-repeat="happening in happenings">
                         <td class="live-feed-minute vertical-middle">{{ happening.minute }}'</td>
                         <td class="live-feed-happening vertical-middle"><span class="live-feed-happening-span live-feed-{{ happening.happening }}"></span></td>
                         <td class="live-feed-description vertical-middle">{{ happening.description }}</td>

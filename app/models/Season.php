@@ -31,4 +31,14 @@ class Season extends Eloquent {
 
 		return $currentSeason;
 	}
+
+	public static function getSeason($season_id)
+	{
+		$season = DB::table('seasons')
+			->where('id', $season_id)
+			->get();
+
+		return $season;
+	}
+
 }
