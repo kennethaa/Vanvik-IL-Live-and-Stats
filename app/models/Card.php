@@ -7,7 +7,6 @@ class Card extends Eloquent {
 		'match_id' => 'required|integer',
 		'minute' => 'required',
 		'happening' => 'required',
-		'player_id' => 'required',
 	);
 
 	public function match()

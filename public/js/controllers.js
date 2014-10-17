@@ -20,12 +20,6 @@ angular.module('myApp.controllers', [])
 		var match_id = $routeParams.match_id;
 		var warning = false;
 
-		if (!match_id) {
-			$http.get('api/v1/live_feed_current_match').success(function(data) {
-				$location.path('/live/' + data.matchinfo[0].id);
-			});
-		}
-
 		var getLiveFeed = function(playSound) {
 			$http.get('api/v1/live_feed/' + match_id).success(function(data) {
 				if (data.warning) {
@@ -75,7 +69,14 @@ angular.module('myApp.controllers', [])
 			});
 		};
 
-		getLiveFeed(false);
+		if (!match_id) {
+			$http.get('api/v1/live_feed_current_match').success(function(data) {
+				$location.path('/live/' + data.matchinfo[0].id);
+			});
+		}
+		else {
+			getLiveFeed(false);
+		}
 
 		//Interval
 		$scope.stopFeed = function() {
@@ -98,12 +99,56 @@ angular.module('myApp.controllers', [])
 
 	})
 
+  	.controller('Stats', function($scope, $http) {
+	  	// loading variable to show the spinning loading icon
+		$scope.loading = true;
+		
+		$http.get('api/v1/players').success(function(data) {
+			$scope.ateam_stars = VanvikUtil.generateTopPlayers(data.players, 'ateam', 'stars');
+			$scope.bteam_stars = VanvikUtil.generateTopPlayers(data.players, 'bteam', 'stars');
+			
+			$scope.ateam_goals = VanvikUtil.generateTopPlayers(data.players, 'ateam', 'goals');
+			$scope.bteam_goals = VanvikUtil.generateTopPlayers(data.players, 'bteam', 'goals');
+
+			$scope.ateam_assists = VanvikUtil.generateTopPlayers(data.players, 'ateam', 'assists');
+			$scope.bteam_assists = VanvikUtil.generateTopPlayers(data.players, 'bteam', 'assists');
+
+			$scope.ateam_points = VanvikUtil.generateTopPlayers(data.players, 'ateam', 'points');
+			$scope.bteam_points = VanvikUtil.generateTopPlayers(data.players, 'bteam', 'points');
+
+			$scope.loading = false;
+		});
+  	})
+
   	.controller('Spillerstall', function($scope, $http) {
 	  	// loading variable to show the spinning loading icon
 		$scope.loading = true;
 		
 		$http.get('api/v1/players').success(function(data) {
-			$scope.players = data.players;
+			$scope.goalkeepers = VanvikUtil.filterPlayers(data.players, 'goalkeeper');
+			$scope.defenders = VanvikUtil.filterPlayers(data.players, 'defender');
+			$scope.midtfielders = VanvikUtil.filterPlayers(data.players, 'midtfielder');
+			$scope.strikers = VanvikUtil.filterPlayers(data.players, 'striker');
+			$scope.loading = false;
+		});
+  	})
+
+  	.controller('Alag', function($scope, $http) {
+	  	// loading variable to show the spinning loading icon
+		$scope.loading = true;
+		
+		$http.get('api/v1/players').success(function(data) {
+			$scope.players = VanvikUtil.removeNotPlayingPlayers(data.players, 'ateam');
+			$scope.loading = false;
+		});
+  	})
+
+  	.controller('Blag', function($scope, $http) {
+	  	// loading variable to show the spinning loading icon
+		$scope.loading = true;
+		
+		$http.get('api/v1/players').success(function(data) {
+			$scope.players = VanvikUtil.removeNotPlayingPlayers(data.players, 'bteam');
 			$scope.loading = false;
 		});
   	});

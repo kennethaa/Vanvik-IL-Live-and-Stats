@@ -8,28 +8,28 @@
 		<!-- THE PLAYERS =============================================== -->
 		<!-- hide the players if the loading variable is true -->
 		<div class="panel panel-default">
-	        <div class="panel-heading">SPILLERSTALL</div>
+	        <div class="panel-heading">MÅLVAKTER</div>
 	        
 	        <table class="table table-condensed">
 				<thead>
 					<tr>
-						<th title="Nummer" class="text-center">#</th>
-						<th>Navn</th>
-						<th>Lag</th>
-						<th title="Kamper" class="matches text-center">K</th>
-						<th title="Mål" class="goals text-center">M</th>
-						<th title="Assists" class="assists text-center">A</th>
-						<th title="Poeng" class="points text-center">P</th>
-						<th title="Gule kort" class="yellow text-center">YE</th>
-						<th title="To gule kort" class="yellowred text-center">YE</th>
-						<th title="Røde kort" class="red text-center">RE</th>
-						<th title="Stjerner" class="stars text-center">S</th>
+						<th title="Nummer" class="text-center vertical-middle">#</th>
+						<th class="vertical-middle squad-name">Navn</th>
+						<th class="vertical-middle">Lag</th>
+						<th title="Kamper" class="text-center"><span class="live-feed-happening-span matches"></span></th>
+						<th title="Mål" class="text-center"><span class="live-feed-happening-span goals"></span></th>
+						<th title="Assists" class="text-center"><span class="live-feed-happening-span assists"></span></th>
+						<th title="Poeng" class="text-center"><span class="live-feed-happening-span points"></span></th>
+						<th title="Gule kort" class="text-center"><span class="live-feed-happening-span yellow"></span></th>
+						<th title="To gule kort" class="text-center"><span class="live-feed-happening-span yellowred"></span></th>
+						<th title="Røde kort" class="text-center"><span class="live-feed-happening-span red"></span></th>
+						<th title="Stjerner" class="text-center"><span class="live-feed-happening-span stars"></span></th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="player in players">
+					<tr ng-repeat="player in goalkeepers">
 						<td class="text-center vertical-middle">{{ player.number }}</td>
-						<td class="vertical-middle">{{ player.name }}</td>
+						<td class="vertical-middle squad-name">{{ player.name }}</td>
 						<td>A-lag<div>B-lag</div></td>
 						<td class="text-center">{{ player.ateam.starting }} ({{ player.ateam.sub }})
 							<div>{{ player.bteam.starting }} ({{ player.bteam.sub }})</div>
@@ -45,6 +45,125 @@
 				</tbody>
 			</table>
 	    </div>
+
+	    <div class="panel panel-default">
+	        <div class="panel-heading">FORSVAR</div>
+	        
+	        <table class="table table-condensed">
+				<thead>
+					<tr>
+						<th title="Nummer" class="text-center vertical-middle">#</th>
+						<th class="vertical-middle squad-name">Navn</th>
+						<th class="vertical-middle">Lag</th>
+						<th title="Kamper" class="text-center"><span class="live-feed-happening-span matches"></span></th>
+						<th title="Mål" class="text-center"><span class="live-feed-happening-span goals"></span></th>
+						<th title="Assists" class="text-center"><span class="live-feed-happening-span assists"></span></th>
+						<th title="Poeng" class="text-center"><span class="live-feed-happening-span points"></span></th>
+						<th title="Gule kort" class="text-center"><span class="live-feed-happening-span yellow"></span></th>
+						<th title="To gule kort" class="text-center"><span class="live-feed-happening-span yellowred"></span></th>
+						<th title="Røde kort" class="text-center"><span class="live-feed-happening-span red"></span></th>
+						<th title="Stjerner" class="text-center"><span class="live-feed-happening-span stars"></span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="player in defenders">
+						<td class="text-center vertical-middle">{{ player.number }}</td>
+						<td class="vertical-middle squad-name">{{ player.name }}</td>
+						<td>A-lag<div>B-lag</div></td>
+						<td class="text-center">{{ player.ateam.starting }} ({{ player.ateam.sub }})
+							<div>{{ player.bteam.starting }} ({{ player.bteam.sub }})</div>
+						</td>
+						<td class="text-center">{{ player.ateam.goals }}<div>{{ player.bteam.goals }}</div></td>
+						<td class="text-center">{{ player.ateam.assists }}<div>{{ player.bteam.assists }}</div></td>
+						<td class="text-center">{{ player.ateam.points }}<div>{{ player.bteam.points }}</div></td>
+						<td class="text-center">{{ player.ateam.yellow_cards }}<div>{{ player.bteam.yellow_cards }}</div></td>
+						<td class="text-center">{{ player.ateam.yellowred_cards }}<div>{{ player.bteam.yellowred_cards }}</div></td>
+						<td class="text-center">{{ player.ateam.red_cards }}<div>{{ player.bteam.red_cards }}</div></td>
+						<td class="text-center">{{ player.ateam.stars }}<div>{{ player.bteam.stars }}</div></td>
+					</tr>
+				</tbody>
+			</table>
+	    </div>
+
+	    <div class="panel panel-default">
+	        <div class="panel-heading">MIDTBANE</div>
+	        
+	        <table class="table table-condensed">
+				<thead>
+					<tr>
+						<th title="Nummer" class="text-center vertical-middle">#</th>
+						<th class="vertical-middle squad-name">Navn</th>
+						<th class="vertical-middle">Lag</th>
+						<th title="Kamper" class="text-center"><span class="live-feed-happening-span matches"></span></th>
+						<th title="Mål" class="text-center"><span class="live-feed-happening-span goals"></span></th>
+						<th title="Assists" class="text-center"><span class="live-feed-happening-span assists"></span></th>
+						<th title="Poeng" class="text-center"><span class="live-feed-happening-span points"></span></th>
+						<th title="Gule kort" class="text-center"><span class="live-feed-happening-span yellow"></span></th>
+						<th title="To gule kort" class="text-center"><span class="live-feed-happening-span yellowred"></span></th>
+						<th title="Røde kort" class="text-center"><span class="live-feed-happening-span red"></span></th>
+						<th title="Stjerner" class="text-center"><span class="live-feed-happening-span stars"></span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="player in midtfielders">
+						<td class="text-center vertical-middle">{{ player.number }}</td>
+						<td class="vertical-middle squad-name">{{ player.name }}</td>
+						<td>A-lag<div>B-lag</div></td>
+						<td class="text-center">{{ player.ateam.starting }} ({{ player.ateam.sub }})
+							<div>{{ player.bteam.starting }} ({{ player.bteam.sub }})</div>
+						</td>
+						<td class="text-center">{{ player.ateam.goals }}<div>{{ player.bteam.goals }}</div></td>
+						<td class="text-center">{{ player.ateam.assists }}<div>{{ player.bteam.assists }}</div></td>
+						<td class="text-center">{{ player.ateam.points }}<div>{{ player.bteam.points }}</div></td>
+						<td class="text-center">{{ player.ateam.yellow_cards }}<div>{{ player.bteam.yellow_cards }}</div></td>
+						<td class="text-center">{{ player.ateam.yellowred_cards }}<div>{{ player.bteam.yellowred_cards }}</div></td>
+						<td class="text-center">{{ player.ateam.red_cards }}<div>{{ player.bteam.red_cards }}</div></td>
+						<td class="text-center">{{ player.ateam.stars }}<div>{{ player.bteam.stars }}</div></td>
+					</tr>
+				</tbody>
+			</table>
+	    </div>
+
+	    <div class="panel panel-default">
+	        <div class="panel-heading">ANGREP</div>
+	        
+	        <table class="table table-condensed">
+				<thead>
+					<tr>
+						<th title="Nummer" class="text-center vertical-middle">#</th>
+						<th class="vertical-middle squad-name">Navn</th>
+						<th class="vertical-middle">Lag</th>
+						<th title="Kamper" class="text-center"><span class="live-feed-happening-span matches"></span></th>
+						<th title="Mål" class="text-center"><span class="live-feed-happening-span goals"></span></th>
+						<th title="Assists" class="text-center"><span class="live-feed-happening-span assists"></span></th>
+						<th title="Poeng" class="text-center"><span class="live-feed-happening-span points"></span></th>
+						<th title="Gule kort" class="text-center"><span class="live-feed-happening-span yellow"></span></th>
+						<th title="To gule kort" class="text-center"><span class="live-feed-happening-span yellowred"></span></th>
+						<th title="Røde kort" class="text-center"><span class="live-feed-happening-span red"></span></th>
+						<th title="Stjerner" class="text-center"><span class="live-feed-happening-span stars"></span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="player in strikers">
+						<td class="text-center vertical-middle">{{ player.number }}</td>
+						<td class="vertical-middle squad-name">{{ player.name }}</td>
+						<td>A-lag<div>B-lag</div></td>
+						<td class="text-center">{{ player.ateam.starting }} ({{ player.ateam.sub }})
+							<div>{{ player.bteam.starting }} ({{ player.bteam.sub }})</div>
+						</td>
+						<td class="text-center">{{ player.ateam.goals }}<div>{{ player.bteam.goals }}</div></td>
+						<td class="text-center">{{ player.ateam.assists }}<div>{{ player.bteam.assists }}</div></td>
+						<td class="text-center">{{ player.ateam.points }}<div>{{ player.bteam.points }}</div></td>
+						<td class="text-center">{{ player.ateam.yellow_cards }}<div>{{ player.bteam.yellow_cards }}</div></td>
+						<td class="text-center">{{ player.ateam.yellowred_cards }}<div>{{ player.bteam.yellowred_cards }}</div></td>
+						<td class="text-center">{{ player.ateam.red_cards }}<div>{{ player.bteam.red_cards }}</div></td>
+						<td class="text-center">{{ player.ateam.stars }}<div>{{ player.bteam.stars }}</div></td>
+					</tr>
+				</tbody>
+			</table>
+	    </div>
+
+
 	</div>
 </div>
 </div>

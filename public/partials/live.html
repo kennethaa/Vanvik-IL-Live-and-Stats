@@ -28,7 +28,7 @@
              <!-- Table -->
              <table class="table">
                 <tbody>
-                    <tr class="match-info-division"><td colspan="2">{{ season }}</td></tr>
+                    <tr class="match-info-division"><td class="match-info-description">Sesong:</td><td>{{ season }}</td></tr>
                     <tr class="match-info-venue"><td class="match-info-description">Stadion:</td><td>{{ matchinfo.venue }}</td></tr>
                     <tr class="match-info-datetime"><td class="match-info-description">Kampstart:</td><td>{{ matchinfo.start_time }}</td></tr>
                     <tr class="match-info-ref"><td class="match-info-description">Dommer:</td><td>{{ matchinfo.ref }}</td></tr>
@@ -76,9 +76,26 @@
             <table class="table" id="happenings">
                 <tbody>
                     <tr class="live-feed-row live-feed-row-{{ happening.happening }}" ng-repeat="happening in happenings">
-                        <td class="live-feed-minute vertical-middle">{{ happening.minute }}'</td>
+                        <td class="live-feed-minute vertical-middle live-feed-{{ happening.happening }}">{{ happening.minute }}'</td>
                         <td class="live-feed-happening vertical-middle"><span class="live-feed-happening-span live-feed-{{ happening.happening }}"></span></td>
-                        <td class="live-feed-description vertical-middle">{{ happening.description }}</td>
+                        <td class="live-feed-description vertical-middle">
+                            <span ng-if="happening.scorer && happening.happening == 'goal'">
+                                Målscorer: <strong><u>{{ happening.scorer }}</u></strong>,
+                            </span>
+                            <span ng-if="happening.assist && happening.happening == 'goal'">
+                                Assist: <strong><u>{{ happening.assist }}</u></strong>.
+                            </span>
+                            <span ng-if="happening.player && happening.happening == 'yellowcard'">
+                                Gult kort: <strong><u>{{ happening.player }}</u></strong>.
+                            </span>
+                            <span ng-if="happening.player && happening.happening == 'yellowredcard'">
+                                Andre gule kort: <strong><u>{{ happening.player }}</u></strong>.
+                            </span>
+                            <span ng-if="happening.player && happening.happening == 'redcard'">
+                                Rødt kort: <strong><u>{{ happening.player }}</u></strong>.
+                            </span>
+                            {{ happening.description }}
+                        </td>
                     </tr>
                 </tbody>
             </table>

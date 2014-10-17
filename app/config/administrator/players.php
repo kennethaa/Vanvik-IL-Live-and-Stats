@@ -92,6 +92,7 @@ return array(
 			'title' => 'Tidligere klubber',
 			'type' => 'text',
 		),
+		/*
 		'image' => array(
 		    'title' => 'Bilde',
 		    'type' => 'image',
@@ -100,6 +101,7 @@ return array(
 		    'length' => 20,
 		    'size_limit' => 10,
 		),
+		*/
 		'inactive' => array(
 			'title' => 'Innaktiv',
 			'type' => 'bool',

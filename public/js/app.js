@@ -7,7 +7,7 @@ angular.module('myApp', [
 	'myApp.filters',
 	'myApp.services',
 	'myApp.directives',
-	'myApp.controllers'
+	'myApp.controllers',
 ]).
 config(function($routeProvider, $locationProvider) {
 	$locationProvider.html5Mode(false);
@@ -18,10 +18,25 @@ config(function($routeProvider, $locationProvider) {
 		controller: 'Live'
 	});
 
+    $routeProvider.when('/stats', {
+        templateUrl: 'partials/stats.html', 
+        controller: 'Stats'
+    });
+
 	$routeProvider.when('/spillerstall', {
 		templateUrl: 'partials/spillerstall.html', 
 		controller: 'Spillerstall'
 	});
+
+    $routeProvider.when('/alag', {
+        templateUrl: 'partials/alag.html', 
+        controller: 'Alag'
+    });
+
+    $routeProvider.when('/blag', {
+        templateUrl: 'partials/blag.html', 
+        controller: 'Blag'
+    });
 
 	$routeProvider.otherwise({ redirectTo: '/live' });
 }).

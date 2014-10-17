@@ -67,58 +67,33 @@ body {
 }
 
 /****************************************************** STATS **/
-th.matches,
-th.goals,
-th.assists,
-th.points,
-th.yellow,
-th.yellowred,
-th.red,
-th.stars {
-	background-position: 50% 3px !important;
-	background-repeat: no-repeat !important;
-	text-indent: -9999em;
+
+span.assists {
+	width: 28px;
 }
 
-th.matches {
+span.matches {
 	background-image: url(../img/icon_matches.png) !important;
 }
 
-th.goals {
+span.goals {
 	background-image: url(../img/icon_goals.png) !important;
 }
 
-th.assists {
+span.assists {
 	background-image: url(../img/icon_assists.png) !important;
 }
 
-th.points {
+span.points {
 	background-image: url(../img/icon_points.png) !important;
 }
 
-th.stars {
+span.stars {
 	background-image: url(../img/icon_stars.png) !important;
 }
 
-th.yellow,
-th.yellowred,
-th.red {
-	background-image: url(../img/cards.png) !important;
-}
-
-th.yellow {
-	background-position: 50% -111px !important;
-}
-
-th.yellowred {
-	background-position: 50% -226px !important;
-}
-
-th.red {
-	background-position: 50% 3px !important;
-}
-
-table > tbody > tr > td.vertical-middle {
+.table > thead > tr > th.vertical-middle,
+.table > tbody > tr > td.vertical-middle {
 	vertical-align: middle;
 }
 
@@ -129,13 +104,22 @@ table > tbody > tr > td.vertical-middle {
 .player-number {
 	width: 10%;
 }
+
+.squad-name {
+	width: 20%;
+}
+
+.stats-name {
+	width: 90%;
+}
+
+.stats-top {
+	width: 10%;
+}
 /******************************************************************END OF STATS **/
 
 
 /****************************************************** LIVE FEED **/
-.live-feed-row-goal {
-	background-color: rgba(119, 179, 0, 0.4);
-}
 
 .live-feed-minute,
 .live-feed-happening {
@@ -155,46 +139,60 @@ table > tbody > tr > td.vertical-middle {
 	background-position: center center;
 }
 
-.live-feed-comment,
-.live-feed-chance,
-.live-feed-whistle,
-.live-feed-change,
-.live-feed-yellowcard,
-.live-feed-yellowredcard,
-.live-feed-redcard,
-.live-feed-goal {
+td.live-feed-minute { border-left: 5px solid transparent; }
+td.live-feed-goal { border-left: 5px solid #77b300 }
+td.live-feed-yellowcard { border-left: 5px solid #f3eb1b; }
+td.live-feed-yellowredcard, 
+td.live-feed-redcard { 
+	border-left: 5px solid #cc0000; 
+}
+
+span.live-feed-comment,
+span.live-feed-chance,
+span.live-feed-whistle,
+span.live-feed-change,
+span.live-feed-yellowcard,
+span.live-feed-yellowredcard,
+span.live-feed-redcard,
+span.live-feed-goal,
+span.yellow,
+span.yellowred,
+span.red {
 	background-image: url(../img/matchcommentary-sprite.png) !important;
 }
 
-.live-feed-comment {
+span.live-feed-comment {
 	background-position: left -721px;
 }
 
-.live-feed-chance {
+span.live-feed-chance {
 	background-position: left -401px;
 }
 
-.live-feed-whistle {
+span.live-feed-whistle {
 	background-position: left -541px;
 }
 
-.live-feed-change {
+span.live-feed-change {
 	background-position: left -581px;
 }
 
-.live-feed-yellowcard {
+span.live-feed-yellowcard,
+span.yellow {
 	background-position: left -261px;
 }
 
-.live-feed-yellowredcard {
+span.live-feed-yellowredcard,
+span.yellowred {
 	background-position: left -281px;
 }
 
-.live-feed-redcard {
+span.live-feed-redcard,
+span.red {
 	background-position: left -301px;
 }
 
-.live-feed-goal {
+span.live-feed-goal {
 	background-position: left -81px;
 }
 

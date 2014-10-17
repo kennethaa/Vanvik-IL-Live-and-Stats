@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp">
+<html lang="no" ng-app="myApp">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -69,7 +69,10 @@
                 <div class="collapse navbar-collapse" ng-controller="HeaderController">
                     <ul class="nav navbar-nav">
                         <li ng-class="{ active: isActive('/live')}"><a href="#!/live">Live</a></li>
+                        <li ng-class="{ active: isActive('/stats')}"><a href="#!/stats">Stats</a></li>
                         <li ng-class="{ active: isActive('/spillerstall')}"><a href="#!/spillerstall">Spillerstall</a></li>
+                        <li ng-class="{ active: isActive('/alag')}"><a href="#!/alag">A-lag</a></li>
+                        <li ng-class="{ active: isActive('/blag')}"><a href="#!/blag">B-lag</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div><!--/.container -->
@@ -104,6 +107,7 @@
         });
     </script>
 
+    <script src="js/main.js"></script>
     <script src="js/angular.min.js"></script>
     <script src="js/angular-route.min.js"></script>
     <script src="js/app.js"></script>

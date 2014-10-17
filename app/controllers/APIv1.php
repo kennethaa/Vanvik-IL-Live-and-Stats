@@ -9,6 +9,12 @@ class APIv1 extends BaseController {
 
 	public function showMatches()
 	{
+		//Check if cache exsists
+		if (Cache::has('show_matches'))
+		{
+			return Cache::get('show_matches');
+		}
+
 		$matches = Match::all();
 		$players = Player::all();
 
@@ -30,11 +36,21 @@ class APIv1 extends BaseController {
 		$json = array(
 			'matches' => $matches,
 		);
+
+		//Save in cache (60 minutes * 24 hours)
+		Cache::put('show_players', $json, 60);
+
 		return $json;
 	}
 
 	public function showPlayers()
 	{
+		//Check if cache exsists
+		if (Cache::has('show_players'))
+		{
+			return Cache::get('show_players');
+		}
+
 		$players = Player::getActivePlayers();
 		$currentSeason = Season::getCurrentSeason();
 		$ateamMatches = Match::getMatchesInSeason($currentSeason[0]->id, 'Vanvik');
@@ -194,6 +210,10 @@ class APIv1 extends BaseController {
 		$json = array(
 			'players' => $players
 		);
+
+		//Save in cache (60 minutes * 24 hours)
+		Cache::put('show_players', $json, 60 * 24);
+
 		return $json;
 	}
 
@@ -244,8 +264,32 @@ class APIv1 extends BaseController {
 
 		$season = Season::getSeason($currentMatch[0]->season_id);
 		$happenings = Happening::getHappeningsInMatch($currentMatch[0]->id);
+
+		$players = Player::all();
+
 		$goals = Goal::getGoalsInMatch($currentMatch[0]->id);
+		foreach ($goals as $key => $value) {
+			
+			foreach ($players as $playerKey => $playerValue) {
+				if ($goals[$key]->scorer_id == $players[$playerKey]['id']) {
+					$goals[$key]->scorer = $players[$playerKey]['name'];
+				}
+				if ($goals[$key]->assist_id == $players[$playerKey]['id']) {
+					$goals[$key]->assist = $players[$playerKey]['name'];
+				}
+			}
+		}
+
 		$cards = Card::getCardsInMatch($currentMatch[0]->id);
+		foreach ($cards as $key => $value) {
+			
+			foreach ($players as $playerKey => $playerValue) {
+				if ($cards[$key]->player_id == $players[$playerKey]['id']) {
+					$cards[$key]->player = $players[$playerKey]['name'];
+				}
+			}
+		}
+
 
 		$happeningsGoalsCards = array_merge($happenings, $goals, $cards);
 
@@ -255,8 +299,16 @@ class APIv1 extends BaseController {
 
 		$matchScore = Goal::getMatchScore($currentMatch[0]->id);
 
-		$starting = Match::find($currentMatch[0]->id)->starting;
-		$substitute = Match::find($currentMatch[0]->id)->substitute;
+		$starting = Match::find($currentMatch[0]->id)->starting->toArray();
+		$substitute = Match::find($currentMatch[0]->id)->substitute->toArray();
+
+		usort($starting, function($a, $b) {
+		    return $a['number'] - $b['number'];
+		});
+
+		usort($substitute, function($a, $b) {
+		    return $a['number'] - $b['number'];
+		});
 
 		$json = array(
 			'match_id' => $match_id,

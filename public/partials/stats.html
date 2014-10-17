@@ -1,0 +1,168 @@
+<!-- LOADING ICON =============================================== -->
+<!-- show loading icon if the loading variable is set to true -->
+<p class="text-center" ng-show="loading"><span class="fa fa-spinner fa-5x fa-spin"></span></p>
+
+<div ng-hide="loading">
+<div class="row">
+
+	<div class="col-md-6">
+		<div class="page-header">
+            <h4>A-LAG</h4>
+        </div>
+		
+        <div class="panel panel-default">
+        	<div class="panel-heading">STJERNER</div>
+	        <table class="table table-condensed">
+				<thead>
+					<tr>
+						<th class="vertical-middle stats-name">Navn</th>
+						<th title="Stjerner" class="text-center"><span class="live-feed-happening-span stars"></span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="player in ateam_stars">
+						<td class="vertical-middle stats-name">{{ player.name }}</td>
+						<td class="text-center">{{ player.ateam.stars }}</td>
+					</tr>
+				</tbody>
+			</table>
+	    </div>
+
+        <div class="panel panel-default">
+        	<div class="panel-heading">TOPPSCORER</div>
+	        <table class="table table-condensed">
+				<thead>
+					<tr>
+						<th class="vertical-middle stats-name">Navn</th>
+						<th title="Mål" class="text-center"><span class="live-feed-happening-span goals"></span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="player in ateam_goals">
+						<td class="vertical-middle stats-name">{{ player.name }}</td>
+						<td class="text-center">{{ player.ateam.goals }}</td>
+					</tr>
+				</tbody>
+			</table>
+	    </div>
+
+	    <div class="panel panel-default">
+        	<div class="panel-heading">SERVITØREN</div>
+	        <table class="table table-condensed">
+				<thead>
+					<tr>
+						<th class="vertical-middle stats-name">Navn</th>
+						<th title="Assists" class="text-center"><span class="live-feed-happening-span assists"></span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="player in ateam_assists">
+						<td class="vertical-middle stats-name">{{ player.name }}</td>
+						<td class="text-center">{{ player.ateam.assists }}</td>
+					</tr>
+				</tbody>
+			</table>
+	    </div>
+
+	    <div class="panel panel-default">
+        	<div class="panel-heading">POENGBØRS</div>
+	        <table class="table table-condensed">
+				<thead>
+					<tr>
+						<th class="vertical-middle stats-name">Navn</th>
+						<th title="Poeng" class="text-center"><span class="live-feed-happening-span points"></span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="player in ateam_points">
+						<td class="vertical-middle stats-name">{{ player.name }}</td>
+						<td class="text-center">{{ player.ateam.points }}</td>
+					</tr>
+				</tbody>
+			</table>
+	    </div>
+
+
+
+	</div>
+
+	<div class="col-md-6">
+		<div class="page-header">
+            <h4>B-LAG</h4>
+        </div>
+		
+        <div class="panel panel-default">
+        	<div class="panel-heading">STJERNER</div>
+	        <table class="table table-condensed">
+				<thead>
+					<tr>
+						<th class="vertical-middle stats-name">Navn</th>
+						<th title="Stjerner" class="text-center"><span class="live-feed-happening-span stars"></span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="player in bteam_stars">
+						<td class="vertical-middle stats-name">{{ player.name }}</td>
+						<td class="text-center">{{ player.bteam.stars }}</td>
+					</tr>
+				</tbody>
+			</table>
+	    </div>
+
+        <div class="panel panel-default">
+        	<div class="panel-heading">TOPPSCORER</div>
+	        <table class="table table-condensed">
+				<thead>
+					<tr>
+						<th class="vertical-middle stats-name">Navn</th>
+						<th title="Mål" class="text-center"><span class="live-feed-happening-span goals"></span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="player in bteam_goals">
+						<td class="vertical-middle stats-name">{{ player.name }}</td>
+						<td class="text-center">{{ player.bteam.goals }}</td>
+					</tr>
+				</tbody>
+			</table>
+	    </div>
+
+	    <div class="panel panel-default">
+        	<div class="panel-heading">SERVITØREN</div>
+	        <table class="table table-condensed">
+				<thead>
+					<tr>
+						<th class="vertical-middle stats-name">Navn</th>
+						<th title="Assists" class="text-center"><span class="live-feed-happening-span assists"></span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="player in bteam_assists">
+						<td class="vertical-middle stats-name">{{ player.name }}</td>
+						<td class="text-center">{{ player.bteam.assists }}</td>
+					</tr>
+				</tbody>
+			</table>
+	    </div>
+
+	    <div class="panel panel-default">
+        	<div class="panel-heading">POENGBØRS</div>
+	        <table class="table table-condensed">
+				<thead>
+					<tr>
+						<th class="vertical-middle stats-name">Navn</th>
+						<th title="Poeng" class="text-center"><span class="live-feed-happening-span points"></span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="player in bteam_points">
+						<td class="vertical-middle stats-name">{{ player.name }}</td>
+						<td class="text-center">{{ player.bteam.points }}</td>
+					</tr>
+				</tbody>
+			</table>
+	    </div>
+
+	</div>
+</div>
+</div>

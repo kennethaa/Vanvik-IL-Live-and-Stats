@@ -1,0 +1,48 @@
+<!-- LOADING ICON =============================================== -->
+<!-- show loading icon if the loading variable is set to true -->
+<p class="text-center" ng-show="loading"><span class="fa fa-spinner fa-5x fa-spin"></span></p>
+
+<div ng-hide="loading">
+<div class="row">
+	<div class="col-md-12">
+		<!-- THE PLAYERS =============================================== -->
+		<!-- hide the players if the loading variable is true -->
+		<div class="panel panel-default">
+	        <div class="panel-heading">A-LAG</div>
+	        
+	        <table class="table table-condensed">
+				<thead>
+					<tr>
+						<th title="Nummer" class="text-center vertical-middle">#</th>
+						<th class="vertical-middle">Navn</th>
+						<th title="Start" class="text-center"><span class="live-feed-happening-span matches"></span></th>
+						<th title="Innbytter" class="text-center"><span class="live-feed-happening-span matches"></span></th>
+						<th title="Mål" class="text-center"><span class="live-feed-happening-span goals"></span></th>
+						<th title="Assists" class="text-center"><span class="live-feed-happening-span assists"></span></th>
+						<th title="Poeng" class="text-center"><span class="live-feed-happening-span points"></span></th>
+						<th title="Gule kort" class="text-center"><span class="live-feed-happening-span yellow"></span></th>
+						<th title="To gule kort" class="text-center"><span class="live-feed-happening-span yellowred"></span></th>
+						<th title="Røde kort" class="text-center"><span class="live-feed-happening-span red"></span></th>
+						<th title="Stjerner" class="text-center"><span class="live-feed-happening-span stars"></span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="player in players">
+						<td class="text-center">{{ player.number }}</td>
+						<td class="">{{ player.name }}</td>
+						<td class="text-center">{{ player.ateam.starting }}</td>
+						<td class="text-center">{{ player.ateam.sub }}</td>
+						<td class="text-center">{{ player.ateam.goals }}</td>
+						<td class="text-center">{{ player.ateam.assists }}</td>
+						<td class="text-center">{{ player.ateam.points }}</td>
+						<td class="text-center">{{ player.ateam.yellow_cards }}</td>
+						<td class="text-center">{{ player.ateam.yellowred_cards }}</td>
+						<td class="text-center">{{ player.ateam.red_cards }}</td>
+						<td class="text-center">{{ player.ateam.stars }}</td>
+					</tr>
+				</tbody>
+			</table>
+	    </div>
+	</div>
+</div>
+</div>
