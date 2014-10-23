@@ -28,5 +28,21 @@ var VanvikUtil = {
 		players = players.slice(0, 5);
 
 		return players;
+	},
+
+	generateAngryPlayers: function(players, team) {
+		players.sort(function(a, b) {
+			if (b[team].red_cards != a[team].red_cards)
+				return b[team].red_cards - a[team].red_cards;
+			else if (b[team].yellowred_cards != a[team].yellowred_cards)
+				return b[team].yellowred_cards - a[team].yellowred_cards;
+			else if (b[team].yellow_cards != a[team].yellow_cards)
+				return b[team].yellow_cards - a[team].yellow_cards;
+			return a.name.localeCompare(b.name);
+		});
+
+		players = players.slice(0, 5);
+
+		return players;
 	}
 }

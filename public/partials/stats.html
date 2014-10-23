@@ -82,7 +82,27 @@
 			</table>
 	    </div>
 
-
+	    <div class="panel panel-default">
+        	<div class="panel-heading">RÅTASSEN</div>
+	        <table class="table table-condensed">
+				<thead>
+					<tr>
+						<th class="vertical-middle stats-name">Navn</th>
+						<th title="Gule kort" class="text-center"><span class="live-feed-happening-span yellow"></span></th>
+						<th title="To gule kort" class="text-center"><span class="live-feed-happening-span yellowred"></span></th>
+						<th title="Røde kort" class="text-center"><span class="live-feed-happening-span red"></span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="player in ateam_cards">
+						<td class="vertical-middle stats-name">{{ player.name }}</td>
+						<td class="text-center">{{ player.ateam.yellow_cards }}</td>
+						<td class="text-center">{{ player.ateam.yellowred_cards }}</td>
+						<td class="text-center">{{ player.ateam.red_cards }}</td>
+					</tr>
+				</tbody>
+			</table>
+	    </div>
 
 	</div>
 
@@ -158,6 +178,28 @@
 					<tr ng-repeat="player in bteam_points">
 						<td class="vertical-middle stats-name">{{ player.name }}</td>
 						<td class="text-center">{{ player.bteam.points }}</td>
+					</tr>
+				</tbody>
+			</table>
+	    </div>
+
+	    <div class="panel panel-default">
+        	<div class="panel-heading">RÅTASSEN</div>
+	        <table class="table table-condensed">
+				<thead>
+					<tr>
+						<th class="vertical-middle stats-name">Navn</th>
+						<th title="Gule kort" class="text-center"><span class="live-feed-happening-span yellow"></span></th>
+						<th title="To gule kort" class="text-center"><span class="live-feed-happening-span yellowred"></span></th>
+						<th title="Røde kort" class="text-center"><span class="live-feed-happening-span red"></span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="player in bteam_cards">
+						<td class="vertical-middle stats-name">{{ player.name }}</td>
+						<td class="text-center">{{ player.bteam.yellow_cards }}</td>
+						<td class="text-center">{{ player.bteam.yellowred_cards }}</td>
+						<td class="text-center">{{ player.bteam.red_cards }}</td>
 					</tr>
 				</tbody>
 			</table>

@@ -190,13 +190,13 @@ class APIv1 extends BaseController {
 				foreach ($cards as $cardsKey => $value) {
 					if ($cards[$cardsKey]->player_id == $players[$playerKey]->id) {
 						if ($cards[$cardsKey]->happening == 'yellowcard') {
-							$ateam->yellow_cards++;
+							$bteam->yellow_cards++;
 						}
 						if ($cards[$cardsKey]->happening == 'yellowredcard') {
-							$ateam->yellowred_cards++;
+							$bteam->yellowred_cards++;
 						}
 						if ($cards[$cardsKey]->happening == 'redcard') {
-							$ateam->red_cards++;
+							$bteam->red_cards++;
 						}
 					}
 				}
@@ -211,8 +211,8 @@ class APIv1 extends BaseController {
 			'players' => $players
 		);
 
-		//Save in cache (60 minutes * 24 hours)
-		Cache::put('show_players', $json, 60 * 24);
+		//Save in cache (60 minutes * 24 hours * 7 days)
+		Cache::put('show_players', $json, 60 * 24 * 7);
 
 		return $json;
 	}

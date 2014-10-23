@@ -116,6 +116,9 @@ angular.module('myApp.controllers', [])
 			$scope.ateam_points = VanvikUtil.generateTopPlayers(data.players, 'ateam', 'points');
 			$scope.bteam_points = VanvikUtil.generateTopPlayers(data.players, 'bteam', 'points');
 
+			$scope.ateam_cards = VanvikUtil.generateAngryPlayers(data.players, 'ateam');
+			$scope.bteam_cards = VanvikUtil.generateAngryPlayers(data.players, 'bteam');
+
 			$scope.loading = false;
 		});
   	})
