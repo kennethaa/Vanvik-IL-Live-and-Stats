@@ -4,11 +4,15 @@ class APIv1 extends BaseController {
 
 	public function missingMethod($parameters = array())
 	{
+			header('Access-Control-Allow-Origin: *');
+
 	    return 'Ingenting funnet!';
 	}
 
 	public function showMatches()
 	{
+		header('Access-Control-Allow-Origin: *');
+
 		//Check if cache exsists
 		if (Cache::has('show_matches'))
 		{
@@ -38,13 +42,15 @@ class APIv1 extends BaseController {
 		);
 
 		//Save in cache (60 minutes * 24 hours)
-		Cache::put('show_players', $json, 60);
+		Cache::put('show_matches', $json, 60);
 
 		return $json;
 	}
 
 	public function showPlayers()
 	{
+		header('Access-Control-Allow-Origin: *');
+		
 		//Check if cache exsists
 		if (Cache::has('show_players'))
 		{
@@ -227,6 +233,8 @@ class APIv1 extends BaseController {
 
 	public function showTeams()
 	{
+		header('Access-Control-Allow-Origin: *');
+
 		$teams = Team::all();
 
 		$json = array(
@@ -237,6 +245,8 @@ class APIv1 extends BaseController {
 
 	public function showSeasons()
 	{
+		header('Access-Control-Allow-Origin: *');
+
 		$seasons = Season::all();
 
 		$json = array(
@@ -247,6 +257,8 @@ class APIv1 extends BaseController {
 
 	public function showCurrentMatch()
 	{
+		header('Access-Control-Allow-Origin: *');
+
 		$currentMatch = Match::getCurrentMatch();
 
 		$json = array(
@@ -257,6 +269,8 @@ class APIv1 extends BaseController {
 
 	public function showLiveFeed($match_id = null)
 	{
+		header('Access-Control-Allow-Origin: *');
+
 		if ($match_id == null) {
 			$currentMatch = Match::getCurrentMatch();
 		}
