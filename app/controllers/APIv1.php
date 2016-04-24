@@ -23,7 +23,7 @@ class APIv1 extends BaseController {
 		$players = Player::all();
 
 		foreach ($matches as $key => $value) {
-			
+
 			foreach ($players as $playerKey => $playerValue) {
 				if ($matches[$key]['star3_id'] == $players[$playerKey]['id']) {
 					$matches[$key]['star3'] = $players[$playerKey]['name'];
@@ -291,7 +291,7 @@ class APIv1 extends BaseController {
 
 		$goals = Goal::getGoalsInMatch($currentMatch[0]->id);
 		foreach ($goals as $key => $value) {
-			
+
 			foreach ($players as $playerKey => $playerValue) {
 				if ($goals[$key]->scorer_id == $players[$playerKey]['id']) {
 					$goals[$key]->scorer = $players[$playerKey]['name'];
@@ -304,7 +304,7 @@ class APIv1 extends BaseController {
 
 		$cards = Card::getCardsInMatch($currentMatch[0]->id);
 		foreach ($cards as $key => $value) {
-			
+
 			foreach ($players as $playerKey => $playerValue) {
 				if ($cards[$key]->player_id == $players[$playerKey]['id']) {
 					$cards[$key]->player = $players[$playerKey]['name'];
@@ -344,6 +344,14 @@ class APIv1 extends BaseController {
 			'happenings' => $happeningsGoalsCards
 		);
 		return $json;
+	}
+
+	public function clearCache()
+	{
+		Cache::forget('show_matches');
+		Cache::forget('show_players');
+
+		return 'Cache deleted.';
 	}
 
 }

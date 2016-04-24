@@ -56,17 +56,17 @@ class Match extends Eloquent {
 		return $this->getAttribute('hometeam_id').' - '.$this->getAttribute('awayteam_id');
 	}
 
-	public function events() 
+	public function events()
 	{
 		return $this->hasMany('Event');
 	}
 
-	public function goals() 
+	public function goals()
 	{
 		return $this->hasMany('Goal');
 	}
 
-	public function cards() 
+	public function cards()
 	{
 		return $this->hasMany('Card');
 	}
@@ -75,9 +75,10 @@ class Match extends Eloquent {
 
 	public static function getMatchesInSeason($season_id, $team_id) {
 		$matches = DB::table('matches')
-			->where('season_id', $season_id)
-			->where('hometeam_id', $team_id)
-			->orWhere('awayteam_id', $team_id)
+			->whereRaw('season_id = ? AND (hometeam_id = ? OR awayteam_id = ?)', array($season_id, $team_id, $team_id))
+			//->where('season_id', $season_id)
+			//->where('hometeam_id', $team_id)
+			//->orWhere('awayteam_id', $team_id)
 			->get();
 
 		return $matches;

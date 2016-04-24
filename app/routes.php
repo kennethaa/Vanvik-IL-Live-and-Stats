@@ -31,6 +31,7 @@ Route::group(array('prefix' => 'api/v1'), function() {
 	Route::get('seasons', 'APIv1@showSeasons');
 	Route::get('live_feed_current_match', 'APIv1@showCurrentMatch');
 	Route::get('live_feed/{match_id?}', 'APIv1@showLiveFeed');
+	Route::get('clear_cache', 'APIv1@clearCache');
 
 });
 
